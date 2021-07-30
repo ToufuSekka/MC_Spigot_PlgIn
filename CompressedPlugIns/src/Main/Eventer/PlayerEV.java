@@ -1,11 +1,9 @@
 package Main.Eventer;
 
-import org.bukkit.BanList.Type;
-
-import java.util.Date;
+import java.util.*;
 
 import org.bukkit.*;
-import org.bukkit.Material;
+import org.bukkit.BanList.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.event.player.*;
@@ -16,10 +14,12 @@ import org.bukkit.inventory.meta.*;
 public class PlayerEV implements Listener {
 	Date date;
 	long Time;
+	
+	Random rmd;
 	Player P;
 	ItemStack Head;
 	SkullMeta MetaHead;
-	int DaysTime = 0;
+	int RebX=0, RebZ = 0;
 	
 	@EventHandler
 	public void ServerJOIN(PlayerLoginEvent PLE) {
@@ -44,12 +44,22 @@ public class PlayerEV implements Listener {
 		this.Head.setItemMeta(this.MetaHead);
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
-		//creating
-		date = new Date();
-		
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), null,null, null);
+		//Not Used
+		//Bukkit.getBanList(Type.NAME).addBan(P.getName(), "", new Date (P.getPlayerTime() + 24000L), "");
 	}
-
+	
+	@EventHandler
+	public void Rebirth(PlayerRespawnEvent PRe) {
+		rmd = new Random();
+		RebX = Bukkit.getWorld("world").getSpawnLocation().getBlockX() + rmd.nextInt(512);
+		RebZ = Bukkit.getWorld("world").getSpawnLocation().getBlockZ() + rmd.nextInt(512);
+		
+		if(!PRe.isBedSpawn())
+			Bukkit.getWorld("world").setSpawnLocation(RebX, Bukkit.getWorld("world").getSpawnLocation().getBlockY(), RebZ);
+		
+		rmd = null;
+	}
+	
 	@EventHandler
 	public void StallEvent(PlayerMoveEvent PME) {
 		this.P = PME.getPlayer();
