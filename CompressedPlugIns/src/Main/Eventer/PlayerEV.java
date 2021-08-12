@@ -19,7 +19,6 @@ public class PlayerEV implements Listener {
 	Player P;
 	ItemStack Head;
 	SkullMeta MetaHead;
-	int RebX=0, RebZ = 0;
 	
 	@EventHandler
 	public void ServerJOIN(PlayerLoginEvent PLE) {
@@ -45,19 +44,7 @@ public class PlayerEV implements Listener {
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
 		//Not Used
-		//Bukkit.getBanList(Type.NAME).addBan(P.getName(), "", new Date (P.getPlayerTime() + 24000L), "");
-	}
-	
-	@EventHandler
-	public void Rebirth(PlayerRespawnEvent PRe) {
-		rmd = new Random();
-		RebX = Bukkit.getWorld("world").getSpawnLocation().getBlockX() + rmd.nextInt(512);
-		RebZ = Bukkit.getWorld("world").getSpawnLocation().getBlockZ() + rmd.nextInt(512);
-		
-		if(!PRe.isBedSpawn())
-			Bukkit.getWorld("world").setSpawnLocation(RebX, Bukkit.getWorld("world").getSpawnLocation().getBlockY(), RebZ);
-		
-		rmd = null;
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "", new Date (P.getPlayerTime() + 24000L), "");
 	}
 	
 	@EventHandler
