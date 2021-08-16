@@ -43,7 +43,6 @@ public class PlayerEV implements Listener {
 		this.Head.setItemMeta(this.MetaHead);
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
-		//Not Used
 		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "", new Date (P.getPlayerTime() + 24000L), "");
 	}
 	
