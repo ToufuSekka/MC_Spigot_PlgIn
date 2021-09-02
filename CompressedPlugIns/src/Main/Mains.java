@@ -1,5 +1,5 @@
 package Main;
-
+import o
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +26,6 @@ public class Mains extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		int DateTime = (int) Bukkit.getWorld("world").getFullTime() / 24000;
-		System.out.println("오늘의 종료 시각은 : " + DateTime + "일 입니다.");
+		System.out.println("�삤�뒛�쓽 醫낅즺 �떆媛곸� : " + DateTime + "�씪 �엯�땲�떎.");
 	}
 }
