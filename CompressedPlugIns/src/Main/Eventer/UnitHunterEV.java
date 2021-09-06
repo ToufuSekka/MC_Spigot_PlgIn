@@ -16,7 +16,6 @@ public class UnitHunterEV  implements Listener {
 
 	SysDice DD = null;
 
-	@EventHandler
 	public void EventType_Piglings(EntityDeathEvent Ede) {
 		this.Le = Ede.getEntity();
 

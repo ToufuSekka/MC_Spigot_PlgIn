@@ -1,12 +1,9 @@
 main: Main.Mains
 name: CompressedPlugIns
-version: 1.7.0
-api-version : 1.16
+version: 2.0.0
+api-version : 1.17
 description : none
 commands:
    store:
       description: Base Store Commands
       usage: /store StoreName
-   evt:
-      description: For Event Store Commands
-      usage: /evt StoreName

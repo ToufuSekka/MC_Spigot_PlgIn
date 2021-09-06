@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/Main/Eventer/PlayerEV.java=UTF-8
 encoding//src/Main/Mains.java=UTF-8
+encoding//src/Main/Store/CMDs/StoreCom.java=UTF-8
+encoding//src/Main/Store/Recipes/StoreRes.java=UTF-8
+encoding//src/Main/SysSPT/SysDice.java=UTF-8

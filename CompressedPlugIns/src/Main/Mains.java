@@ -1,5 +1,5 @@
 package Main;
-import o
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,10 +15,7 @@ public class Mains extends JavaPlugin {
 	public void onEnable() {
 		
 		Bukkit.getPluginManager().registerEvents(new PlayerEV(), this);
-		Bukkit.getPluginManager().registerEvents(new UnitHunterEV(), this);
 		Bukkit.getPluginManager().registerEvents(new WeaponsEV(), this);
-		Bukkit.getPluginManager().registerEvents(new WorldEvent(), this);
-		Bukkit.getPluginManager().registerEvents(new UnitSpawnEv(), this);
 		this.getCommand("store").setExecutor(new StoreCom());
 		this.getCommand("evt").setExecutor(new StoreCom());
 	}
