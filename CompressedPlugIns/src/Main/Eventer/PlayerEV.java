@@ -25,11 +25,15 @@ public class PlayerEV implements Listener {
 		P = PLE.getPlayer();
 		date = new Date();
 		Time = date.getTime();
+		Bukkit.getLogger().info("테스터가 들어옴 : " + Time);
 	}
 	
 	@EventHandler
 	public void ServerOut(PlayerQuitEvent PQE) {
-		//
+		P = PQE.getPlayer();
+		date = new Date();
+		Time = date.getTime();
+		Bukkit.getLogger().info("테스터가 나감.");
 	}
 	
 	@EventHandler

@@ -44,10 +44,10 @@ public class Items {
 	
 	/**
 	 * 화약추진로켓을 위한 함수.
-	 * @param 날아갈 힘(시간)을 정한다. 최소 0, 최대 128까지 넣을수 있다.
-	 * @param 아이탬의 갯수
-	 * @param 로켓의 폭발 효과를 넣을수 있다.
-	 * @param 원본아이탬의 바꾸고 싶은 
+	 * @param Power 날아갈 힘(시간)을 정한다. 최소 0, 최대 128까지 넣을수 있다.
+	 * @param Stacks 아이탬의 갯수
+	 * @param Effect 로켓의 폭발 효과를 넣을수 있다.
+	 * @param ItemName 원본아이탬의 바꾸고 싶은 
 	 * @param LoreData 넣고싶은 특수한 아이탬 설명을 기입한다.
 	 * @return 안알려줌.
 	 */

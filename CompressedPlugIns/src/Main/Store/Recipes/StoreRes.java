@@ -6,6 +6,11 @@ import org.bukkit.inventory.*;
 
 import Main.Store.Items;
 
+/**
+ * 특수 상점. 커멘드로만 열린다.
+ * @author ToufuSekka
+ * @since 2021.09.07
+ */
 public class StoreRes extends Items {
 
 	private MerchantRecipe[] mr; // putting in Each other recipe for Wanting Item
