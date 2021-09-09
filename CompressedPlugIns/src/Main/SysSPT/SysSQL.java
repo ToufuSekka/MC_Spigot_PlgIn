@@ -87,7 +87,7 @@ public class SysSQL {
 		}else if(Data instanceof Integer) {
 			//
 		}else if(Data instanceof Float) {
-			
+			//
 		}
 		
 		return null;
