@@ -9,67 +9,72 @@ public class SQLSystem {
 	private ResultSet Res;
 	
 	private StringBuilder QueryBuild = new StringBuilder();
-	private StringBuilder ViewCoder = new StringBuilder();
 	private String Query="";
 	
 	private Object[] DatOrigin = {};
-	//
-	public void Rigister(String UUID) {
+	
+	public boolean ServerChecker(){
 		INIT();
-		Query = "INSERT INTO MCUserData(UUID, LeftTime) VALUE (?,?);";
+		return false;
+	}
+	
+	public boolean Rigister(String UUID) {
+		INIT();
+		this.Query = "INSERT INTO MCUserData(UUID, LeftTime) VALUE (?,?);";
 		try {
-			ppst=con.prepareStatement(Query);
-			ppst.setString(0, UUID);
-			ppst.setInt(1, 3000000);
-			ppst.execute();			
+			this.ppst=this.con.prepareStatement(this.Query);
+			this.ppst.setString(0, UUID);
+			this.ppst.setInt(1, 3000000);
+			this.ppst.execute();
+			
 		}catch(SQLException SQLe) {
 			SQLe.printStackTrace();
+			return false;
+		}finally {
+			TheClose();
 		}
-		TheClose();
+		return true;
 	}
 	
 	public ArrayList<Object[]> Searcher(String TableName, String[] LookSelector, String[] CondCulom, Object[] CondData) {
 		ArrayList<Object[]> LisObj = new ArrayList<Object[]>();
 		
 		if(CondCulom.length != CondData.length)
-			new IllegalArgumentException("∞∞¿∫ Cond¿« ∞πºˆ∏¶ ∏¬√Á¡÷Ω Ω√ø¿.");
+			new IllegalArgumentException("CondCulomÏôÄ CondCulomÏùò Í∞ØÏàòÎ•º ÎßûÏ∂∞ Ï£ºÏã≠ÏãúÏò§.");
 		
-		Query = QueryCreator(LookSelector, CondCulom);
-		
+		this.Query = QueryCreator(LookSelector, CondCulom);
 		INIT();
-		
 		try {
-			ppst = con.prepareStatement(Query);
+			this.ppst = this.con.prepareStatement(this.Query);
 			for(int r = 0;r < CondData.length;r++) {
-				ppst.setObject(r, CondData[r]);
+				this.ppst.setObject(r, CondData[r]);
 			}
-			Res = ppst.executeQuery();
-			while(Res.next()) {
+			this.Res = this.ppst.executeQuery();
+			while(this.Res.next()) {
 				for(int y = 0;y < LookSelector.length;y++) {
-					DatOrigin[y]= Res.getObject(y);
+					this.DatOrigin[y]= this.Res.getObject(y);
 				}
+				LisObj.add(this.DatOrigin);
 			}
-			
 		}catch(SQLException SQLe) {
 			SQLe.printStackTrace();
 		}
-		
 		TheClose();
-		
 		return LisObj;
 	}
 	
-	public void Modifier(String TableNme) {
+	
+	protected void Modifier(String TableNme) {
 		INIT();
 		TheClose();
 	}
 	
-	public void Creater(String TableNme, String[] SetCulom, Object[] Values) {
+	protected void Creater(String TableNme, String[] SetCulom, Object[] Values) {
 		INIT();
 		TheClose();
 	}
 	
-	public void Deleter(String TableNme) {
+	protected void Deleter(String TableNme) {
 		INIT();
 		TheClose();
 	}
@@ -77,8 +82,7 @@ public class SQLSystem {
 	private void INIT() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://wint0719.ipdisk.co.kr:3306/test","root","vonrk08217!");
-			
+			this.con = DriverManager.getConnection("jdbc:mysql://wint0719.ipdisk.co.kr:3306/test","root","vonrk08217!");
 		}catch(ClassNotFoundException CNFe) {
 			CNFe.printStackTrace();
 		}catch (SQLException SQLe) {
@@ -88,43 +92,33 @@ public class SQLSystem {
 	
 	private void TheClose() {
 		try {
-			if(!Res.isClosed())
-				Res.close();
-			if(!ppst.isClosed())
-				ppst.close();
-			if(!con.isClosed())
-				con.close();
+			if(!this.Res.isClosed())
+				this.Res.close();
+			if(!this.ppst.isClosed())
+				this.ppst.close();
+			if(!this.con.isClosed())
+				this.con.close();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 	
 	private String QueryCreator(String[] SelectLooker, String[] ConditionCulomm) {
-		QueryBuild.setLength(0);
+		this.QueryBuild.setLength(0);
 		
 		if(SelectLooker.length == 0 || SelectLooker.equals(null)) {
-			QueryBuild.append("SELECT * FROM");
+			this.QueryBuild.append("SELECT * FROM");
 		}else {
-			QueryBuild.append("SELECT ("+String.join(",",SelectLooker)+") FROM WHERE");
+			this.QueryBuild.append("SELECT ("+String.join(",",SelectLooker)+") FROM WHERE");
 		}
 		
 		for(int x= 0;x < ConditionCulomm.length;x++) {
 			if(x == ConditionCulomm.length-1) {
-				QueryBuild.append(ConditionCulomm[x]+"=?;");
+				this.QueryBuild.append(ConditionCulomm[x]+"=?;");
 			}else {
-				QueryBuild.append(ConditionCulomm[x]+"=? AND ");
+				this.QueryBuild.append(ConditionCulomm[x]+"=? AND ");
 			}
 		}
-		return QueryBuild.toString();
-	}
-	
-	private char Translator(Object Type) {
-		
-		if(Type instanceof Integer)
-			return 'i';
-		else if(Type instanceof String)
-			return 's';
-		else
-			return 'o';
+		return this.QueryBuild.toString();
 	}
 }
