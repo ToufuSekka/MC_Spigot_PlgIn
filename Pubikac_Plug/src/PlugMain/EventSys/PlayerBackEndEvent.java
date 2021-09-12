@@ -1,37 +1,39 @@
 package PlugMain.EventSys;
 
 import java.util.*;
-import java.text.*;
 
 import org.bukkit.*;
-import org.bukkit.BanList.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.event.player.*;
-import org.bukkit.event.entity.*;
-import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.*;
 
 import PlugMain.SysSPT.*;
 
 public class PlayerBackEndEvent implements Listener {
+	private ArrayList<Object[]>Data = new ArrayList<Object[]>();
 	private Player P;
-	private SimpleDateFormat SimDatFmt= new SimpleDateFormat("YYYY-MM-dd-hh:mm:ss");
-	private Date[] date;
 	
 	private SQLSystem SQLSys = new SQLSystem();
 	
 	@EventHandler
-	public void ServerJoin(PlayerLoginEvent PLE) {
-		date = new Date[1];
+	public void ServerJoin(PlayerLoginEvent PLe) {
 		
-		P = PLE.getPlayer();
+		P = PLe.getPlayer();
 		String str =P.getUniqueId().toString();
-		SQLSys.Rigister(str);
+		P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
+		System.out.println(str+"가 올");
+		
+		Data = SQLSys.Searcher("MCUser",new String[] {"UUID"}, new String[] {"UUID"}, new Object[] {str});
+		if(Data.isEmpty()) {
+			SQLSys.Rigister(str);
+		}
+		
 	}
 	
 	@EventHandler
-	public void ServerQuit() {
-		
+	public void ServerQuit(PlayerQuitEvent PQe) {
+		P = PQe.getPlayer();
+		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE)/20;
+		System.out.println(Time+"초 동안 함.");
 	}
 }
