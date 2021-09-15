@@ -15,6 +15,7 @@ public class SQLSystem {
 	
 	public boolean ServerChecker(){
 		INIT();
+
 		return false;
 	}
 	
@@ -42,7 +43,18 @@ public class SQLSystem {
 		if(CondCulom.length != CondData.length)
 			new IllegalArgumentException("CondCulom와 CondCulom의 갯수를 맞춰 주십시오.");
 		
-		this.Query = QueryCreator(LookSelector, CondCulom);
+		if(LookSelector.length == 0 || CondCulom.equals(null)) 
+			this.QueryBuild.append("SELECT * FROM "+TableName);
+		else 
+			this.QueryBuild.append("SELECT ("+String.join(",",LookSelector)+") FROM "+TableName+" WHERE");
+		
+		for(int x= 0;x < CondCulom.length;x++) {
+			if(x == CondCulom.length-1) 
+				this.QueryBuild.append(CondCulom[x]+"=?;");
+			else 
+				this.QueryBuild.append(CondCulom[x]+"=? AND ");
+		}
+		
 		INIT();
 		try {
 			this.ppst = this.con.prepareStatement(this.Query);
@@ -60,12 +72,39 @@ public class SQLSystem {
 			SQLe.printStackTrace();
 		}
 		TheClose();
+		this.Query = "";
 		return LisObj;
 	}
 	
 	
-	protected void Modifier(String TableNme) {
+	public void Modifier(String TableName, String[][] Mdf_ColumNDDatas, String[][] Cond_CulomANDDatas) {
+		if(Mdf_ColumNDDatas[0].length != Mdf_ColumNDDatas[1].length)
+			new IllegalArgumentException("CondCulom와 CondCulom의 갯수를 맞춰 주십시오.");
+		
+		this.QueryBuild.append("UPDATE "+TableName+" SET ");
+		
+		for(int x= 0;x < Mdf_ColumNDDatas[0].length;x++) {
+			if(x == Mdf_ColumNDDatas[0].length-1) 
+				this.QueryBuild.append(Mdf_ColumNDDatas[0][x]+"=?;");
+			else 
+				this.QueryBuild.append(Mdf_ColumNDDatas[0][x]+"=? AND ");
+		}
+		
+		this.QueryBuild.append(" WHERE ");
+		
+		for(int x= 0;x < Cond_CulomANDDatas[0].length;x++) {
+			if(x == Cond_CulomANDDatas[0].length-1) 
+				this.QueryBuild.append(Cond_CulomANDDatas[0][x]+"=?;");
+			else 
+				this.QueryBuild.append(Cond_CulomANDDatas[0][x]+"=? AND ");
+		}
+		
 		INIT();
+		try {
+			this.ppst = this.con.prepareStatement(this.Query);
+		}catch(SQLException SQLe) {
+			
+		}
 		TheClose();
 	}
 	
@@ -101,24 +140,5 @@ public class SQLSystem {
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
-	}
-	
-	private String QueryCreator(String[] SelectLooker, String[] ConditionCulomm) {
-		this.QueryBuild.setLength(0);
-		
-		if(SelectLooker.length == 0 || SelectLooker.equals(null)) {
-			this.QueryBuild.append("SELECT * FROM");
-		}else {
-			this.QueryBuild.append("SELECT ("+String.join(",",SelectLooker)+") FROM WHERE");
-		}
-		
-		for(int x= 0;x < ConditionCulomm.length;x++) {
-			if(x == ConditionCulomm.length-1) {
-				this.QueryBuild.append(ConditionCulomm[x]+"=?;");
-			}else {
-				this.QueryBuild.append(ConditionCulomm[x]+"=? AND ");
-			}
-		}
-		return this.QueryBuild.toString();
 	}
 }

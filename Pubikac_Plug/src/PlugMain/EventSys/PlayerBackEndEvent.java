@@ -34,6 +34,7 @@ public class PlayerBackEndEvent implements Listener {
 	public void ServerQuit(PlayerQuitEvent PQe) {
 		P = PQe.getPlayer();
 		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE)/20;
+		
 		System.out.println(Time+"초 동안 함.");
 	}
 }
