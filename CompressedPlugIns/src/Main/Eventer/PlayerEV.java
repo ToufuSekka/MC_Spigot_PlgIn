@@ -12,29 +12,11 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 
 public class PlayerEV implements Listener {
-	Date date;
-	long Time;
 	
 	Random rmd;
 	Player P;
 	ItemStack Head;
 	SkullMeta MetaHead;
-	
-	@EventHandler
-	public void ServerJOIN(PlayerLoginEvent PLE) {
-		P = PLE.getPlayer();
-		date = new Date();
-		Time = date.getTime();
-		Bukkit.getLogger().info("테스터가 들어옴 : " + Time);
-	}
-	
-	@EventHandler
-	public void ServerOut(PlayerQuitEvent PQE) {
-		P = PQE.getPlayer();
-		date = new Date();
-		Time = date.getTime();
-		Bukkit.getLogger().info("테스터가 나감.");
-	}
 	
 	@EventHandler
 	public void PlayerDead(PlayerDeathEvent PDE) {
