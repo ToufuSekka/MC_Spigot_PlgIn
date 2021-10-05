@@ -39,7 +39,6 @@ public class PlayerBackEndEvent implements Listener {
 		String str =P.getUniqueId().toString();
 
 		if(!SQLSys.Reserv_(SQLCMD_Reserved.TimeLimiter, new String[] {str})) {
-			System.out.println("조건 승인");
 			this.P.kickPlayer("가용 시간이 없습니다. 충전하십시오.");
 		}
 	}
