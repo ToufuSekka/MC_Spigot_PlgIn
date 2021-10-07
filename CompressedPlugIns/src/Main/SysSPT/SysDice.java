@@ -56,7 +56,7 @@ public class SysDice {
 		if (BaseDice < 0)
 			throw new IllegalArgumentException("0보다 큰수를 기입하시오."); //$NON-NLS-1$
 		if (BaseDice < MaxWin)
-			throw new IllegalArgumentException("湲곗큹�씤�옄蹂대떎 �겙 二쇱궗�쐞瑜� �꽕�젙�븷�닔 �뾾�뒿�땲�떎."); //$NON-NLS-1$
+			throw new IllegalArgumentException("湲곗큹�씤�옄蹂대떎 �겙 二쇱궗�쐞瑜� �꽕�젙�븷�닔 �뾾�뒿�땲�떎.");
 		if (MinWin < 0)
 			throw new IllegalArgumentException("理쒖냼 �떦泥⑥＜�궗�쐞 �닔�뒗 0蹂대떒 而ㅼ빞�빀�땲�떎."); //$NON-NLS-1$
 

@@ -13,7 +13,8 @@ import org.bukkit.inventory.meta.*;
 
 import PlugMain.SysSPT.*;
 
-public class PlayerBackEndEvent implements Listener {	
+public class PlayerBackEndEvent implements Listener {
+	private LocalDateTime LDT;
 	private Player P;
 	private ItemStack Head;
 	private SkullMeta MetaHead;
@@ -22,7 +23,7 @@ public class PlayerBackEndEvent implements Listener {
 	
 	@EventHandler
 	public void ServerJoin(PlayerLoginEvent PLe) {
-		
+		LDT =LocalDateTime.now(); 
 		P = PLe.getPlayer();
 		String str =P.getUniqueId().toString();
 		P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
@@ -30,6 +31,7 @@ public class PlayerBackEndEvent implements Listener {
 		if(!SQLSys.Reserv_(SQLCMD_Reserved.SearchUser, new String[] {str})) {
 			SQLSys.Reserv_(SQLCMD_Reserved.Rigist,new String[] {str});
 		}
+		SQLSys.Reserv_(SQLCMD_Reserved.LoginDate, new String[] {str});
 	}
 	
 	@EventHandler
@@ -49,7 +51,7 @@ public class PlayerBackEndEvent implements Listener {
 		String str =P.getUniqueId().toString();
 		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE)/20;
 		System.out.println("나감->"+str +"'Player : "+ Time);
-		SQLSys.Reserv_(SQLCMD_Reserved.TimeCulcurateor,new String[] {String.valueOf(Time), str});
+		SQLSys.Reserv_(SQLCMD_Reserved.TimeCulcurater,new String[] {String.valueOf(Time), str});
 	}
 	
 	@EventHandler
@@ -62,10 +64,10 @@ public class PlayerBackEndEvent implements Listener {
 		this.Head.setItemMeta(this.MetaHead);
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
-		LocalDateTime LDT = LocalDateTime.now().plusMinutes(40);
+		LDT = LocalDateTime.now().plusMinutes(40);
 		Date D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "사망하였습니다.", D, "");
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "사망하였습니다. 40분동안 접속이 불가능합니다.", D, "");
 		this.P.kickPlayer("사망하였습니다. 일정시간동안 접속이 불가능합니다.");
 	}
 }

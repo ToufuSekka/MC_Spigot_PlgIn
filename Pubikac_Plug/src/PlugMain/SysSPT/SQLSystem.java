@@ -1,6 +1,7 @@
 package PlugMain.SysSPT;
 
 import java.sql.*;
+import java.time.*;
 
 public class SQLSystem {
 	
@@ -37,7 +38,13 @@ public class SQLSystem {
 				if(this.TimeData > 0)
 					Checker = true;
 				break;
-			case TimeCulcurateor:
+			case LoginDate:
+				this.ppst.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+				this.ppst.setString(2, Data[0]);
+				this.Res = this.ppst.executeQuery();
+				Checker = true;
+				break;
+			case TimeCulcurater:
 				this.TimeData = Integer.parseInt(Data[0]);
 				this.ppst.setInt(1, this.TimeData);
 				this.ppst.setString(2, Data[1]);
@@ -70,7 +77,7 @@ public class SQLSystem {
 				//
 			}
 		}catch(SQLException SQLe) {
-			
+			//
 		}
 		TheClose();
 		return false;
