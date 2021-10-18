@@ -64,10 +64,10 @@ public class PlayerBackEndEvent implements Listener {
 		this.Head.setItemMeta(this.MetaHead);
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
-		LDT = LocalDateTime.now().plusMinutes(40);
+		LDT = LocalDateTime.now().plusMinutes(38);
 		Date D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "사망하였습니다. 40분동안 접속이 불가능합니다.", D, "");
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "사망하였습니다. 38분동안 접속이 불가능합니다.", D, "");
 		this.P.kickPlayer("사망하였습니다. 일정시간동안 접속이 불가능합니다.");
 	}
 }

@@ -9,6 +9,7 @@ public enum SQLCMD_Reserved {
 	TimeCulcurater("UPDATE userdata SET LeftLifeTime = LeftLifeTime - ?, WHERE UUID=?;");
 	
 	private final String Type;
+	
 	SQLCMD_Reserved(String Type){
 		this.Type = Type;
 	};
