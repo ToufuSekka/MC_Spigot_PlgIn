@@ -1,6 +1,5 @@
 package PlugMain.SysSPT;
 
-@SuppressWarnings("nls")
 public enum SQLCMD_Reserved {
 	Rigist("INSERT INTO userdata(UUID, LeftLifeTime) VALUE (?,?);"),
 	SearchUser("SELECT 'UUID' FROM userdata WHERE UUID=?;"),

@@ -14,7 +14,7 @@ public class TestMetals {
 		IS =new ItemStack(Material.ACACIA_BOAT);
 		RC = new RecipeChoice.ExactChoice(new ItemStack(Material.YELLOW_BED));
 		NameKey = new NamespacedKey((Plugin) this, "");
-		Sr = new ShapedRecipe(NameKey,RC);
+		Sr = new ShapedRecipe(NameKey, new ItemStack(Material.ACACIA_TRAPDOOR));
 		
 		Sr.setIngredient('a', RC);
 	}

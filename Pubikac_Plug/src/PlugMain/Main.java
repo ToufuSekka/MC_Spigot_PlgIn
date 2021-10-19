@@ -8,11 +8,6 @@ import PlugMain.EventSys.*;
 public class Main extends JavaPlugin {
 	
 	@Override
-	public void onLoad() {
-		
-	}
-	
-	@Override
 	public void onEnable() {
 		EventAdder();
 		StoreAdder();
@@ -26,5 +21,7 @@ public class Main extends JavaPlugin {
 	private void EventAdder() {
 		Bukkit.getPluginManager().registerEvents(new PlayerBackEndEvent(), this);
 	}
-	private void StoreAdder() {}
+	private void StoreAdder() {
+		//
+	}
 }
