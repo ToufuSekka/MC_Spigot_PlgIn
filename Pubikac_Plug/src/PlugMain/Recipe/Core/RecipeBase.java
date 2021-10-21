@@ -6,39 +6,42 @@ import org.bukkit.*;
 import org.bukkit.inventory.*;
 
 public class RecipeBase {
-	ShapedRecipe Recp_Shape;
-	NamespacedKey NameKey;
 	Recipe[] Recp;
 	
-	Map<Character,Integer> map;// <-고쳐야함. I Ciffal
-	
-	public ShapedRecipe ShapedAdder(NamespacedKey NameKey, ItemStack Result,String[] Shape, RecipeChoice[] Ingredients) {
-		ShapedRecipe SpdRes = new ShapedRecipe(NameKey, Result);
-		List<Character> ShapeChar = new ArrayList<Character>();
-		
-		SpdRes.shape(Shape);
-		for(String str:Shape) {
-			char[] cArr = str.toCharArray();
-			for(char c:cArr){
-				if(c != ' ') {
-					ShapeChar.add(c);
-				}
-			}
+	/**
+	 * 
+	 * @param NameKey 아이탬의 묶음을 표현하기 위한 것.
+	 * @param Result 최종 결과물
+	 * @param IngreSets 결과물의 제료들.<br/>키에 대응하는 RecipeChoice.ExactChoice~를 사용할것.<br/>
+	 * Ex) RecipeChoice RecCho =<br/> new RecipeChoice.ExactChoice(new ItemStack(Material.MAGENTA_BANNER));
+	 * @return 니가 원하던 결과물
+	 */
+	public ShapelessRecipe UnShapeAdder(NamespacedKey NameKey, ItemStack Result, List<RecipeChoice> IngreSets) {
+		ShapelessRecipe SplRec = new ShapelessRecipe(NameKey,new ItemStack(Material.BIG_DRIPLEAF));
+		for(RecipeChoice RC:IngreSets) {
+			SplRec.addIngredient(RC);
 		}
-
-		for(RecipeChoice igre:Ingredients)
-			SpdRes.setIngredient(';', igre);
-
-		return SpdRes;
+		return SplRec;
 	}
 	
-	@Deprecated
-	public void o(NamespacedKey Key, ItemStack Result) {
-		Recp_Shape = new ShapedRecipe(Key, Result);
+	/**
+	 * 특수 지징모양 레시피를 만들기 위한 함수.
+	 * @param NameKey 아이탬의 묶음을 표현하기 위한 것.
+	 * @param Result 최종 결과물
+	 * @param Shape 결과물을 만들기 위한 모양세 
+	 * @param IngreSets 결과물의 제료들. 키에 대응하는 RecipeChoice.<br/>ExactChoice~를 사용할것.<br/>
+	 * Ex) RecipeChoice RecCho =<br/> new RecipeChoice.ExactChoice(new ItemStack(Material.MAGENTA_BANNER));
+	 * @return 니가 원하던 결과물
+	 */
+	public ShapedRecipe ShapedAdder(NamespacedKey NameKey, ItemStack Result,String[] Shape, Map<Character, RecipeChoice> IngreSets) {
+		// ~RecipeChoice RecCho = new RecipeChoice.ExactChoice(new ItemStack(Material.MAGENTA_BANNER));
+		Set<Character> ItemSet = IngreSets.keySet();
 		
-		Recp = new ShapedRecipe[2];
-		
-		Recp[0] = Recp_Shape;
-		Bukkit.addRecipe(Recp[0]);
+		ShapedRecipe SpdRes = new ShapedRecipe(NameKey, Result);
+		SpdRes.shape(Shape);
+		for(char c:ItemSet) {
+			SpdRes.setIngredient(c, IngreSets.get(c));
+		}
+		return SpdRes;
 	}
 }
