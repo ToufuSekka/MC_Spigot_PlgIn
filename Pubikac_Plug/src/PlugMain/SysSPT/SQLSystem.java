@@ -12,7 +12,13 @@ public class SQLSystem {
 	
 	private String Query="";
 	private int TimeData=0;
-		
+
+	/**
+	 * 
+	 * @param ReserveType
+	 * @param Data
+	 * @return if Data Collect true.
+	 */
 	public boolean Reserv_(SQLCMD_Reserved ReserveType, String[] Data) {
 		boolean Checker = false;
 		this.Query="";
@@ -24,38 +30,27 @@ public class SQLSystem {
 			this.ppst = this.con.prepareStatement(this.Query);
 			
 			switch(ReserveType){
+			case Rigist:
+				this.ppst=this.con.prepareStatement(this.Query);
+				this.ppst.setString(1, Data[0]);//UUID
+				this.ppst.executeUpdate();
+				Checker = true;
+				break;
 			case SearchUser:
-				this.ppst.setString(1, Data[0]);
+				this.ppst.setString(1, Data[0]);//UUID
 				this.Res = this.ppst.executeQuery();
 				Checker = this.Res.first();
 				break;
-			case TimeLimiter:
-				this.ppst.setString(1, Data[0]);
-				this.Res = this.ppst.executeQuery();
-				while(Res.next()) {
-					this.TimeData = this.Res.getInt(1);
-					}
-				if(this.TimeData > 0)
-					Checker = true;
-				break;
 			case LoginDate:
 				this.ppst.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
-				this.ppst.setString(2, Data[0]);
+				this.ppst.setString(2, Data[0]);//UUID
 				this.Res = this.ppst.executeQuery();
 				Checker = true;
 				break;
-			case TimeCulcurater:
-				this.TimeData = Integer.parseInt(Data[0]);
-				this.ppst.setInt(1, this.TimeData);
-				this.ppst.setString(2, Data[1]);
-				this.ppst.executeUpdate();
-				Checker = true;
-				break;
-			case Rigist:
-				this.ppst=this.con.prepareStatement(this.Query);
-				this.ppst.setString(1, Data[0]);
-				this.ppst.setInt(2, 3000000);
-				this.ppst.executeUpdate();
+			case GameLeft:
+				this.ppst.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+				this.ppst.setString(2, Data[0]);//UUID
+				this.Res = this.ppst.executeQuery();
 				Checker = true;
 				break;
 			default:
