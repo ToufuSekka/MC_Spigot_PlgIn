@@ -9,9 +9,8 @@ public class SQLSystem {
 	private Connection con;
 	private PreparedStatement ppst;
 	private ResultSet Res;
-	
+
 	private String Query="";
-	private int TimeData=0;
 
 	/**
 	 * 
@@ -22,7 +21,6 @@ public class SQLSystem {
 	public boolean Reserv_(SQLCMD_Reserved ReserveType, String[] Data) {
 		boolean Checker = false;
 		this.Query="";
-		this.TimeData=0;
 		this.Query = ReserveType.GetQuery();
 
 		INIT();		
