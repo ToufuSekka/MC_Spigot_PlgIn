@@ -1,10 +1,10 @@
 package PlugMain.SysSPT;
 
 import java.sql.*;
-import java.time.*;
 
 public class SQLSystem {
 	
+	//private static String SERVER= "jdbc:mysql://localhost:3306/mctotalsys";
 	private static String SERVER= "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 	private Connection con;
 	private PreparedStatement ppst;
@@ -39,16 +39,14 @@ public class SQLSystem {
 				this.Res = this.ppst.executeQuery();
 				Checker = this.Res.first();
 				break;
-			case LoginDate:
-				this.ppst.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
-				this.ppst.setString(2, Data[0]);//UUID
-				this.Res = this.ppst.executeQuery();
+			case Login:
+				this.ppst.setString(1, Data[0]);//UUID
+				this.ppst.executeUpdate();
 				Checker = true;
 				break;
 			case GameLeft:
-				this.ppst.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
-				this.ppst.setString(2, Data[0]);//UUID
-				this.Res = this.ppst.executeQuery();
+				this.ppst.setString(1, Data[0]);//UUID
+				this.ppst.executeUpdate();
 				Checker = true;
 				break;
 			default:
@@ -78,6 +76,7 @@ public class SQLSystem {
 			
 	private void INIT() {
 		try {
+			//this.con = DriverManager.getConnection(SERVER,"root",null);
 			this.con = DriverManager.getConnection(SERVER,"mcplayer","vonrk08217");
 		}catch (SQLException SQLe) {
 			SQLe.printStackTrace();

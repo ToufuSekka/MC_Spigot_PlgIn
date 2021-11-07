@@ -29,7 +29,7 @@ public class PlayerBackEndEvent extends SQLSystem implements Listener {
 		if(!Reserv_(SQLCMD_Reserved.SearchUser, new String[] {str})) {
 			Reserv_(SQLCMD_Reserved.Rigist,new String[] {str});
 		}
-		Reserv_(SQLCMD_Reserved.LoginDate, new String[] {str});
+		Reserv_(SQLCMD_Reserved.Login, new String[] {str});
 	}
 
 	@EventHandler
@@ -49,7 +49,7 @@ public class PlayerBackEndEvent extends SQLSystem implements Listener {
 		this.Head.setItemMeta(this.MetaHead);
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), this.Head);
 		
-		if(this.P.getBedLocation() == null) {
+		if(this.P.getBedSpawnLocation() == null) {
 			MinTime = 48;
 			LDT = LocalDateTime.now().plusMinutes(MinTime);
 			this.D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
