@@ -42,5 +42,4 @@ public class AdvItemBase {
 		this.Item.setItemMeta(this.ComMeta);
 		return this.Item;
 	}
-
 }
