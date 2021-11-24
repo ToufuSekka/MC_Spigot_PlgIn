@@ -17,7 +17,7 @@ public class RecipeBase {
 	 * @return 니가 원하던 결과물
 	 */
 	public ShapelessRecipe UnShapeAdder(NamespacedKey NameKey, ItemStack Result, List<RecipeChoice> IngreSets) {
-		ShapelessRecipe SplRec = new ShapelessRecipe(NameKey,new ItemStack(Material.BIG_DRIPLEAF));
+		ShapelessRecipe SplRec = new ShapelessRecipe(NameKey,Result);
 		for(RecipeChoice RC:IngreSets) {
 			SplRec.addIngredient(RC);
 		}
@@ -44,4 +44,5 @@ public class RecipeBase {
 		}
 		return SpdRes;
 	}
+	
 }

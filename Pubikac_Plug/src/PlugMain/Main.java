@@ -24,4 +24,8 @@ public class Main extends JavaPlugin {
 	private void StoreAdder() {
 		//
 	}
+	
+	private void RecipeAdder() {
+		//
+	};
 }

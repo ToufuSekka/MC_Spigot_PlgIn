@@ -13,7 +13,6 @@ public class SQLSystem {
 	private String Query="";
 
 	/**
-	 * 
 	 * @param ReserveType
 	 * @param Data
 	 * @return if Data Collect true.
