@@ -9,7 +9,6 @@ public class RecipeBase {
 	Recipe[] Recp;
 	
 	/**
-	 * 
 	 * @param NameKey 아이탬의 묶음을 표현하기 위한 것.
 	 * @param Result 최종 결과물
 	 * @param IngreSets 결과물의 제료들.<br/>키에 대응하는 RecipeChoice.ExactChoice~를 사용할것.<br/>

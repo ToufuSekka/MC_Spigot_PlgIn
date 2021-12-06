@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.*;
 
 import PlugMain.EventSys.*;
+import PlugMain.Recipe.*;
 
 public class Main extends JavaPlugin {
 	
@@ -11,6 +12,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		EventAdder();
 		StoreAdder();
+		RecipeAdder();
 	}
 	
 	@Override
@@ -26,6 +28,6 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void RecipeAdder() {
-		//
+		new CstUnshpRecp().Bomb_Level_1();
 	};
 }

@@ -2,30 +2,34 @@ package PlugMain.Recipe;
 
 import java.util.*;
 import org.bukkit.*;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.*;
 import org.bukkit.inventory.*;
-
+import org.bukkit.inventory.RecipeChoice.ExactChoice;
 import PlugMain.Recipe.Core.*;
 
 public class CstUnshpRecp extends RecipeBase {
-	NamespacedKey NameKey;
 	
-	ShapelessRecipe UnShaped;
-	ItemStack Result;
-	ItemStack[] IngrePiece = new ItemStack[9];
-	
-	RecipeChoice.ExactChoice ReChoEx;
 	JavaPlugin JvPlugin;
 	
-	public List<RecipeChoice> ingreds = new ArrayList<RecipeChoice>();
+	private RecipeChoice.ExactChoice ReChoEx;
 	
-	public void UnShapedRec() {
-		NameKey = new NamespacedKey(JvPlugin, "NeptuneCutm");
+	private RecipeBase RecBase;
+	private AdvItemBase AdvItmBas;
+	
+	private NamespacedKey NameKey;
+	private ItemStack Result;
+	private List<RecipeChoice> ingreds = new ArrayList<RecipeChoice>();
+	
+	public void Bomb_Level_1() {
+		AdvItmBas = new AdvItemBase();
+		RecBase = new RecipeBase();
 		
-		//ReChoEx = new ExactChoice(null);
+		NameKey = new NamespacedKey(JvPlugin, "NeptuneCustom_BombSet");
+		Result = AdvItmBas.LoredItem(Material.SPLASH_POTION, "ÆøÅº", new String[] {"Bomb_Power6"});
+		ReChoEx = new ExactChoice(new ItemStack(Material.TNT,2));
+		ingreds.add(ReChoEx);
 		
-		ingreds.add(null);
-		
-		UnShaped = UnShapeAdder(NameKey, Result, ingreds);
+		Bukkit.addRecipe(RecBase.UnShapeAdder(NameKey, Result, ingreds));
 	}
 }
