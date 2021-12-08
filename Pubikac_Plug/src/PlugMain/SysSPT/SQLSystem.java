@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class SQLSystem {
 	
-	//private static String SERVER= "jdbc:mysql://localhost:3306/mctotalsys";
-	private static String SERVER= "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
+	private static String SERVER= "jdbc:mysql://localhost:3306/mctotalsys";
+	//private static String SERVER= "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 	private Connection con;
 	private PreparedStatement ppst;
 	private ResultSet Res;
@@ -75,8 +75,8 @@ public class SQLSystem {
 			
 	private void INIT() {
 		try {
-			//this.con = DriverManager.getConnection(SERVER,"root",null);
-			this.con = DriverManager.getConnection(SERVER,"mcplayer","vonrk08217");
+			this.con = DriverManager.getConnection(SERVER,"root",null);
+			//this.con = DriverManager.getConnection(SERVER,"mcplayer","vonrk08217");
 		}catch (SQLException SQLe) {
 			SQLe.printStackTrace();
 		}
