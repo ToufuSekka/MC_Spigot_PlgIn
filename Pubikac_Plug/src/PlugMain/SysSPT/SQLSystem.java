@@ -1,26 +1,8 @@
 package PlugMain.SysSPT;
 
-import java.sql.*;
-
 public class SQLSystem {
-	
-	private static String SERVER= "jdbc:mysql://localhost:3306/mctotalsys";
-	//private static String SERVER= "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
-	private Connection con;
-	private PreparedStatement ppst;
-	private ResultSet Res;
 
-	private String Query="";
-
-	/**
-	 * @param ReserveType
-	 * @param Data
-	 * @return if Data Collect true.
-	 */
-	public boolean Reserv_(SQLCMD_Reserved ReserveType, String[] Data) {
-		boolean Checker = false;
-		this.Query="";
-		this.Query = ReserveType.GetQuery();
+	public boolean Reserv_() {
 
 		INIT();		
 		try {
