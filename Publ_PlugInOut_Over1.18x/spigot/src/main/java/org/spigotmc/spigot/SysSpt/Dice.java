@@ -18,13 +18,13 @@ public class Dice {
 		if((percent < 0)||(percent > 100))
 			throw new IllegalArgumentException(" 0 에서 100사이의 실수의 숫자를 기입해 주십시오.") ; 
 		
-		Ran = new Random();
+		this.Ran = new Random();
 		float Value = Ran.nextFloat() * 100f;
 		
 		if(percent <= Value)
-			WIN = true;
+			this.WIN = true;
 		else
-			WIN = false;
+			this.WIN = false;
 	}
 	
 	/**
@@ -42,12 +42,12 @@ public class Dice {
 		if(WinNumber.length > DiceNumber)
 			throw new IndexOutOfBoundsException("수사의 인수보다 많은 담첨인자를 만들지 마십시오.");
 		
-		Ran= new Random();
+		this.Ran= new Random();
 		int Value = Ran.nextInt(DiceNumber);
 		
 		for (int i : WinNumber) {
 			if (Value == i) {
-				WIN = true;
+				this.WIN = true;
 				break;
 			} else
 				WIN = false;
@@ -71,17 +71,17 @@ public class Dice {
 		if(MinWin> MaxWin)
 			throw new IndexOutOfBoundsException("Min은 Max보다 작아야합니다.");
 		
-		Ran = new Random();
-		int Value = Ran.nextInt(BaseDice);
+		this.Ran = new Random();
+		int Value = this.Ran.nextInt(BaseDice);
 
 		if ((Value > MinWin) && (Value < MaxWin))
-			WIN = true;
+			this.WIN = true;
 		else
-			WIN = false;
+			this.WIN = false;
 	
 	}
 	
 	public boolean GetWin() {
-		return WIN;
+		return this.WIN;
 	}
 }

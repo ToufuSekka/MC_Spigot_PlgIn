@@ -7,7 +7,7 @@ public class SQLSystem {
 	//That is Inly Test Server. Do not Delete it!
 	private static String SERVER_local= "jdbc:mysql://localhost:3306/mctotalsys";
 	
-	//Tha is RealServer
+	//That is RealServer
 	//private static String SERVER= "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 	
 	private Connection con;
@@ -16,7 +16,7 @@ public class SQLSystem {
 	
 	private String Query;
 	
-	public boolean Reserve(SQLCMD_Reserved Type, String[] Datas) {
+	public boolean ReservedSQL(SQLCMD_Reserved Type, String[] Datas) {
 		boolean Checker = false;
 		this.Query=Type.GetQuery();
 		
