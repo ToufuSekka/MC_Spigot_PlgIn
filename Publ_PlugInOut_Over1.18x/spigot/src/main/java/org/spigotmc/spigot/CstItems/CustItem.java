@@ -17,9 +17,9 @@ public class CustItem {
 	
 	private List<String> LoreData = new ArrayList<String>();
 	
-	public ItemStack LoredItem(Material material, String ItemName, String[] LoreDatas) {
+	public ItemStack LoredItem(Material material, int Amount, String ItemName, String[] LoreDatas) {
 		this.LoreData.clear();
-		this.Item = new ItemStack(material);
+		this.Item = new ItemStack(material, Amount);
 		this.ComMeta = (ItemMeta) Item.getItemMeta();
 		
 		if(ItemName.length() > 1) {
