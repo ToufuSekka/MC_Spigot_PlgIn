@@ -17,13 +17,13 @@ public class Banks extends CustItem {
 		
 		ItemStack CheckPaper = LoredItem(Material.PAPER, 1,"수표(64블럭)",
 				new String[]{"64블럭", "아래의 국제은행에서 보증합니다.", "-눈사람 은행-"});
-		
+		/*
 		ItemStack CheckPapers64 = LoredItem(Material.PAPER, 64,"수표(64블럭)",
 				new String[]{"64블럭", "아래의 국제은행에서 보증합니다.", "-눈사람 은행-"});
 		
 		ItemStack CheckBook = LoredItem(Material.PAPER,1, "수표뭉치(64 수표)",
 				new String[]{"64수표", "아래의 국제은행에서 보증합니다.", "-눈사람 은행-"});
-		
+		*/
 		this.Mer_Rec[0] = new MerchantRecipe(CheckPaper, 1024);
 		this.Mer_Rec[0].addIngredient(new ItemStack(Material.EMERALD_BLOCK, 64));
 		this.Mer_Rec[0].setUses(0);
