@@ -16,6 +16,7 @@ public class StoreSet implements CommandExecutor {
 			switch (SubCMDs[0]) {
 			case "bank":
 				User.openMerchant(bank.ExchangerBank(), true);
+				User.getNearbyEntities(0, 0, 0);
 				break;
 			default:
 				User.sendMessage("존제하지 않음.");
@@ -23,5 +24,10 @@ public class StoreSet implements CommandExecutor {
 			}
 		}
 		return false;
+	}
+	
+	@SuppressWarnings("unused")
+	private void T(Player player, Entity entity) {
+		player.openMerchant(bank.ExchangerBank(), true);
 	}
 }

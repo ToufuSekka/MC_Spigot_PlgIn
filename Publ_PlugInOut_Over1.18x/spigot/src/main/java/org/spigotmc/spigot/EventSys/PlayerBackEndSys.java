@@ -50,11 +50,11 @@ public class PlayerBackEndSys extends SQLSystem implements Listener{
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), Head);
 		
 		if(this.P.getBedSpawnLocation() == null) {
-			RevelveTime = 52;
+			RevelveTime = 46;
 			this.LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			this.D = Date.from(this.LDT.atZone(ZoneId.systemDefault()).toInstant());
 		} else {
-			RevelveTime = 32;
+			RevelveTime = 28;
 			this.LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			this.D = Date.from(this.LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}

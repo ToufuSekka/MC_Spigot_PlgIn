@@ -15,22 +15,14 @@ public class Main extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
-		EventAdder();
-		CommamdAdder();
+		Bukkit.getPluginManager().registerEvents(new PlayerBackEndSys(),this);
+		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(),this);
+		
+		this.getCommand("store").setExecutor(new StoreSet());
 	}
 	
 	@Override
 	public void onDisable() {
 		//
-	}
-	
-	//privators
-	private void EventAdder() {
-		Bukkit.getPluginManager().registerEvents(new PlayerBackEndSys(),this);
-		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(),this);
-	}
-	
-	private void CommamdAdder() {
-		this.getCommand("store").setExecutor(new StoreSet());
 	}
 }
