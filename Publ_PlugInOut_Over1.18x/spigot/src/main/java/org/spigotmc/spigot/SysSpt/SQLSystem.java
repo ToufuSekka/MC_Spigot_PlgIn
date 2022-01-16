@@ -38,7 +38,7 @@ public class SQLSystem {
 			case SearchUser:
 				this.ppst.setString(1, Datas[0]);//UUID
 				this.Res = this.ppst.executeQuery();
-				Checker = this.Res.first();
+				Checker = this.Res.next();
 				break;
 			case GameLeft:
 				this.ppst.setString(1, Datas[0]);//UUID

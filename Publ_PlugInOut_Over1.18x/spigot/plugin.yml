@@ -1,6 +1,6 @@
 main: org.spigotmc.spigot.Main
 name: Publ_PlugInOut_Over1.18x
-version: '3.0.0'
+version: '3.0.6'
 api: 1.18.1
 api-version: 1.13
 author: Touhu Sekka

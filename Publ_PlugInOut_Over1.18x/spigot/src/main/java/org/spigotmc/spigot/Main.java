@@ -10,7 +10,7 @@ public class Main extends JavaPlugin{
 	
 	@Override
 	public void onLoad() {
-		//
+		new PlayerDataSorter().Sorting();
 	}
 	
 	@Override
