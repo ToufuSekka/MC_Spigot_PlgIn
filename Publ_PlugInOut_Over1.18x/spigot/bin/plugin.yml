@@ -1,0 +1,11 @@
+main: org.spigotmc.spigot.Main
+name: Publ_PlugInOut_Over1.18x
+version: '3.2.0'
+api: 1.18.1
+api-version: 1.13
+author: Touhu Sekka
+description: 내가 만든거. 동풍설화 또는 토-후 셋카라고 읽어주자.
+commands: 
+    Store:
+        description: 특수상점을 열기 위한 것.
+        usage: /store [Type of Store]

@@ -40,6 +40,7 @@ public class PlayerBackEndSys extends SQLSystem implements Listener{
 	@EventHandler
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		this.P = PDe.getEntity().getPlayer();
+		String Killer =P.getKiller().getName().toString();
 		int RevelveTime = 0;
 		
 		ItemStack Head = new ItemStack(Material.PLAYER_HEAD);
@@ -50,17 +51,18 @@ public class PlayerBackEndSys extends SQLSystem implements Listener{
 		this.P.getWorld().dropItemNaturally(this.P.getLocation(), Head);
 		
 		if(this.P.getBedSpawnLocation() == null) {
-			RevelveTime = 46;
+			RevelveTime = 44;
 			this.LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			this.D = Date.from(this.LDT.atZone(ZoneId.systemDefault()).toInstant());
 		} else {
-			RevelveTime = 28;
+			RevelveTime = 24;
 			this.LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			this.D = Date.from(this.LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}
 		
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), "사망하였습니다. "+RevelveTime+"분동안 접속이 불가능합니다.", D, "");
-		this.P.kickPlayer("사망하였습니다. "+RevelveTime+"분듕안 접속이 불가능합니다.");
+		String BanText = "You're dead to "+Killer+"\nYou unable join our Server for "+RevelveTime+" Miniutes.";
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, "");
+		this.P.kickPlayer(BanText);
 		this.D = null;
 	}
 }
