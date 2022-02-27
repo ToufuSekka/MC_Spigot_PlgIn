@@ -1,4 +1,4 @@
-package org.spigotmc.spigot.SysSpt;
+package MCPlugIn119v.Supporter.SQL;
 
 public enum SQLCMD_Reserved {
 	Rigist("INSERT INTO userdata(UUID) VALUE (?);"),
