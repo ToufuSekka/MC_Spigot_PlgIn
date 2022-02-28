@@ -15,7 +15,7 @@ public class TwitMain {
 	
 	
 	@SuppressWarnings("unused")
-	public void OpenServerTwit(String TweetText) {
+	public void ServerMSGTwit(String TweetText) {
 
 		TwitterClient TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
 				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
