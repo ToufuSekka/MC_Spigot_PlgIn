@@ -4,6 +4,12 @@ import java.io.*;
 
 import MCPlugIn119v.Supporter.SQL.*;
 
+
+/**
+ * @since 2022-02-28
+ * @author ToufuSekka
+ * 일단, 데이터 정리기.
+ */
 public class PlayerDataSorter extends SQLMain {
 
 	public void Sorting() {
