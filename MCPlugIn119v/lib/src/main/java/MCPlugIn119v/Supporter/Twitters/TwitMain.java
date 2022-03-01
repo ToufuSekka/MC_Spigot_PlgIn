@@ -8,13 +8,11 @@ import io.github.redouane59.twitter.signature.*;
  * @author TouhuSekka
  */
 public class TwitMain {
-	private final String AccessToken = "1407844909-bOF1ArPMBEhOBA0q8daDU8ebUxp6SBBGvanGYps";
-	private final String AccessToken_Secret = "eBmLhpuM8k3jiNFJtPeBfPJxlN6NDCn7haEmyMgeujzEq";
-	private final String ComsumeAPIKey = "XVI8QfK56nZf0hRr3JeOhfUnU";
-	private final String ComsumeAPI_Secret = "iv2uMjLK7SgU3aijV2ydUkbZN24KisNPaavt21qBClOj27JUt2";
+	private final String AccessToken = "1483719714262388739-jTGfNQDkFZvMkJ09IUmNDYB1WUI0Di";
+	private final String AccessToken_Secret = "2tawWcD8OtzdTH547JYpaUzqCqYNYIENfGYrIZg70Svh3";
+	private final String ComsumeAPIKey = "whrrUAD92F19T0kpHM2PQnm6y";
+	private final String ComsumeAPI_Secret = "IGbZONaY7rvTthNUHQc02Y6JsF9VJwznc7NWdUctyzWCNrMQeo";
 	
-	
-	@SuppressWarnings("unused")
 	public void ServerMSGTwit(String TweetText) {
 
 		TwitterClient TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)

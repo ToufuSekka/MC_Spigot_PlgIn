@@ -1,5 +1,7 @@
 plugins {
     id 'java-library'
+    id 'net.minecrell.plugin-yml.bukkit' version '0.5.1'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 repositories {
@@ -29,4 +31,27 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bukkit {
+	main = 'MCPlugIn119v.Main'
+	name = 'MCPlugIn119v'
+	apiVersion = '1.13'
+    version = '0.0.0'
+    description = '내가 만든거. 동풍설화 또는 토-후 셋카라고 읽어주자.'
+    author = 'TouhuSekka'
+    
+    commands {
+    	store {
+    	description = 'Openning for Special Stores'
+    	aliases = ['store']
+    	usage = '/store [Type of Store]'
+    	}
+    }
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'MCPlugIn119v.Main'
+    }
 }
