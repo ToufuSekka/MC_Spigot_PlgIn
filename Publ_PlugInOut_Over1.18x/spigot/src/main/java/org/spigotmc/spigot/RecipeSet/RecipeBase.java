@@ -5,7 +5,6 @@ import java.util.*;
 import org.bukkit.*;
 import org.bukkit.inventory.*;
 
-
 public class RecipeBase {
 	Recipe[] Recp;
 	
