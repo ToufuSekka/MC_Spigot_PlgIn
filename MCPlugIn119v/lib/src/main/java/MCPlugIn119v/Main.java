@@ -17,7 +17,7 @@ public class Main extends JavaPlugin {
 		new PlayerDataSorter().Sorting();
 		new TwitMain().ServerMSGTwit(
 				"Our Minecraft Server open." + "\nServerType : JE 1.18.1" + "\nCommunity : cafe.naver.com/mcnaptune"
-						+ "\nConnection Server : wint0719.codns.com" + "\n#MinecraftServer" + "\n#Minecraft");
+						+ "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer" + "\n#Minecraft");
 
 	}
 
