@@ -4,7 +4,6 @@ import java.io.*;
 
 import MCPlugIn119v.Supporter.SQL.*;
 
-
 /**
  * @since 2022-02-28
  * @author ToufuSekka
@@ -23,11 +22,9 @@ public class PlayerDataSorter extends SQLMain {
 		// File WinDataFiles = new
 		// File("E:/Minecraft/MineCraftSoloTestWorld/world/playerdata");
 
-		File[] DataFileList = LinuxDataFiles.listFiles();
-
 		FileChecker(LinuxStatFiles.listFiles(), ".json");
 		FileChecker(LinuxDataFiles.listFiles(), ".dat_old");
-		FileChecker(LinuxStatFiles.listFiles(), ".dat");
+		FileChecker(LinuxDataFiles.listFiles(), ".dat");
 
 	}
 
@@ -42,7 +39,7 @@ public class PlayerDataSorter extends SQLMain {
 			}
 
 			if (BL) {
-				System.out.println("Found : -> " + FileName);
+				System.out.println("Exist User : -> " + FileName);
 			} else {
 				System.out.println("Deleted : -> " + FileName);
 				f.delete();
