@@ -41,7 +41,7 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 	@EventHandler
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		P = PDe.getEntity().getPlayer();
-		String Killer = P.getKiller().getName().toString();
+
 		int RevelveTime = 0;
 
 		ItemStack Head = new ItemStack(Material.PLAYER_HEAD);
@@ -52,17 +52,17 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 		P.getWorld().dropItemNaturally(P.getLocation(), Head);
 
 		if (P.getBedSpawnLocation() == null) {
-			RevelveTime = 44;
+			RevelveTime = 24;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		} else {
-			RevelveTime = 24;
+			RevelveTime = 20;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}
 
-		String BanText = "You're dead to " + Killer + "\nYou unable join our Server for " + RevelveTime + " Miniutes.";
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, "");
+		String BanText = "You're dead.\nYou unable join our Server for " + RevelveTime + " Miniutes.";
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, PDe.getDeathMessage());
 		P.kickPlayer(BanText);
 		D = null;
 	}
