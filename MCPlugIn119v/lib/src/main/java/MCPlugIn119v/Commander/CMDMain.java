@@ -3,26 +3,25 @@ package MCPlugIn119v.Commander;
 import org.bukkit.command.*;
 import org.bukkit.entity.*;
 
-public class Main implements CommandExecutor {
+import MCPlugIn119v.Recipe.Merchant.*;
+
+public class CMDMain implements CommandExecutor {
 
 	Player P;
-
 	@Override
 	public boolean onCommand(CommandSender CMDsender, Command cmnd, String MainCMD, String[] SubCMDs) {
 
-		if (CMDsender instanceof Player && MainCMD.equalsIgnoreCase("Store")) {
+		if (CMDsender instanceof Player && MainCMD.equalsIgnoreCase("store")) {
 			P = (Player) CMDsender;
-
 			switch (SubCMDs[0]) {
-			case "":
-				P.openMerchant(null, true);
+			case "exch":
+				P.openMerchant(new Bank().ExchangerBanks(), true);
 				break;
 			default:
-				P.sendMessage("You unable to open :: Nothing");
+				P.sendMessage("You're unable to open :: Nothing");
 				break;
 			}
 		}
 		return false;
 	}
-
 }
