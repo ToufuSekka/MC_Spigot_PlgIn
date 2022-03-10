@@ -7,8 +7,8 @@ import MCPlugIn119v.Supporter.Twitters.*;
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
 import MCPlugIn119v.Commander.*;
-import MCPlugIn119v.Recipe.EnumSet.BombType;
-import MCPlugIn119v.Recipe.SahpeLess.*;
+//import MCPlugIn119v.Recipe.EnumSet.*;
+//import MCPlugIn119v.Recipe.SahpeLess.*;
 
 /**
  * @since 2022-02-28
@@ -19,8 +19,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		new PlayerDataSorter().Sorting();
-		new TwitMain().ServerMSGTwit("Our Minecraft Server open." + "\nIf you wonder a thing, Please DM"
-				+ "\nServerType : JE 1.18.1" + "\nCommunity : https://cafe.naver.com/mcneptune"
+		new TwitMain().ServerMSGTwit("Minecraft Server open." + "\nIf you wonder a thing, Please DM"
+				+ "\nServerType : JE 1.18.1" + "\nCommunity : https://cafe.naver.com/mcneptune (Only Koeran Support)"
 				+ "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer #Minecraft");
 	}
 
@@ -36,10 +36,11 @@ public class Main extends JavaPlugin {
 		this.getCommand("store").setExecutor(new CMDMain());
 
 		// Specialrecipe
-		new TNTBomb(BombType.TNTBomb, this);
-		new TNTBomb(BombType.Radioactive, this);
+		// new TNTBomb(BombType.TNTBomb, this);
+		// new TNTBomb(BombType.Radioactive, this);
+		// new TNTBomb(BombType.Nuclear, this);
 	}
-	
+
 	@Override
 	public void onDisable() {
 		new TwitMain().ServerMSGTwit("Server is Closed. See you Next Time."
