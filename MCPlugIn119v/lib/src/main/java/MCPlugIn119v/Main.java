@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		new PlayerDataSorter().Sorting();
-		new TwitMain().ServerMSGTwit("Minecraft Server open." + "\nIf you wonder a thing, Please DM"
+		new TwitMain().ServerMSGTwit("Minecraft Server open." + "\nIf you have opinions, Please DM."
 				+ "\nServerType : JE 1.18.1" + "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)"
 				+ "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer #Minecraft");
 	}
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		new TwitMain().ServerMSGTwit("Server is Closed. See you Next Time."
+		new TwitMain().ServerMSGTwit("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
 				+ "\nCommunity : https://cafe.naver.com/mcneptune" + "\n#MinecraftServer #Minecraft");
 	}
 }
