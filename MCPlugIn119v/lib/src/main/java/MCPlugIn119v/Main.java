@@ -7,8 +7,8 @@ import MCPlugIn119v.Supporter.Twitters.*;
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
 import MCPlugIn119v.Commander.*;
-//import MCPlugIn119v.Recipe.EnumSet.*;
-//import MCPlugIn119v.Recipe.SahpeLess.*;
+import MCPlugIn119v.Recipe.EnumSet.*;
+import MCPlugIn119v.Recipe.SahpeLess.*;
 
 /**
  * @since 2022-02-28
@@ -36,7 +36,7 @@ public class Main extends JavaPlugin {
 		this.getCommand("store").setExecutor(new CMDMain());
 
 		// Specialrecipe
-		// new TNTBomb(BombType.TNTBomb, this);
+		new TNTBomb(BombType.TNTBomb, this);
 		// new TNTBomb(BombType.Radioactive, this);
 		// new TNTBomb(BombType.Nuclear, this);
 	}

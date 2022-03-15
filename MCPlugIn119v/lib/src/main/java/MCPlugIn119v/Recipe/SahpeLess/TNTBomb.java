@@ -47,12 +47,13 @@ public class TNTBomb {
 
 		ForLore[0] = "Bomb";
 		ForLore[1] = Float.toString(PowerCult);
-		NamespacedKey Key = new NamespacedKey(plugIn, "fireweapon_type1_" + FirePower);
+		NamespacedKey Key = new NamespacedKey(plugIn, "Granade_" + FirePower);
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Granade", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
+			System.out.println(".");
 		}
 		return res;
 	}
@@ -64,7 +65,7 @@ public class TNTBomb {
 		ForLore[0] = "Bomb";
 		ForLore[1] = Float.toString(PowerCult);
 
-		NamespacedKey Key = new NamespacedKey(plugIn, "fireweapon_type2_" + FirePower);
+		NamespacedKey Key = new NamespacedKey(plugIn, "RadioactiveBomb_" + FirePower);
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Radioactive", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
@@ -72,6 +73,7 @@ public class TNTBomb {
 		res.addIngredient(Material.DRAGON_BREATH);
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
+			System.out.println(".");
 		}
 		return res;
 	}
@@ -82,12 +84,13 @@ public class TNTBomb {
 
 		ForLore[0] = "Bomb";
 		ForLore[1] = Float.toString(PowerCult);
-		NamespacedKey Key = new NamespacedKey(plugIn, "fireweapon_type3_" + FirePower);
+		NamespacedKey Key = new NamespacedKey(plugIn, "NuclearBomb_" + FirePower);
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Nuclear", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.DRAGON_BREATH);
+			System.out.println(".");
 		}
 		return res;
 	}
