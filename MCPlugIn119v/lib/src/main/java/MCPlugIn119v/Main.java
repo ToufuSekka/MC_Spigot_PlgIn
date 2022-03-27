@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
 	public void onLoad() {
 		new PlayerDataSorter().Sorting();
 		new TwitMain().ServerMSGTwit("Minecraft Server open." + "\nIf you have opinions, Please DM."
-				+ "\nServerType : JE 1.18.1" + "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)"
+				+ "\nServerType : JE 1.18.2" + "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)"
 				+ "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer #Minecraft");
 	}
 

@@ -61,7 +61,7 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}
 
-		String BanText = "You're dead.\nYou unable join our Server for " + RevelveTime + " Miniutes.";
+		String BanText = "You're dead.\nYou are unable to join our Server for " + RevelveTime + " Miniutes.";
 		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, PDe.getDeathMessage());
 		P.kickPlayer(BanText);
 		D = null;

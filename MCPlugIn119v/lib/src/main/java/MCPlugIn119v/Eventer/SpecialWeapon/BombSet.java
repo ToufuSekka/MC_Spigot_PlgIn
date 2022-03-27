@@ -35,7 +35,6 @@ public class BombSet implements Listener {
 		}
 	}
 	
-	
 	@EventHandler
 	public void Cannon(FireworkExplodeEvent FEe) {
 		

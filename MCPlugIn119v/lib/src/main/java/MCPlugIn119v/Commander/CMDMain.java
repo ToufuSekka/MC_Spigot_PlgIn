@@ -5,6 +5,10 @@ import org.bukkit.entity.*;
 
 import MCPlugIn119v.Recipe.Merchant.*;
 
+/**
+ * @since 2022-03-26
+ * @author ToufuSekka
+ */
 public class CMDMain implements CommandExecutor {
 
 	Player P;

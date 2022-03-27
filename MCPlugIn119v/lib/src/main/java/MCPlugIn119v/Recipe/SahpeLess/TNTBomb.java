@@ -51,9 +51,10 @@ public class TNTBomb {
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Granade", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
+		System.out.print("Starting Bomb Adding");
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
-			System.out.println(".");
+			System.out.print(".");
 		}
 		return res;
 	}
@@ -69,11 +70,12 @@ public class TNTBomb {
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Radioactive", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
-
+		
+		System.out.print("Starting Bomb Adding");
 		res.addIngredient(Material.DRAGON_BREATH);
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
-			System.out.println(".");
+			System.out.print(".");
 		}
 		return res;
 	}
@@ -88,9 +90,11 @@ public class TNTBomb {
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Nuclear", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
+		
+		System.out.print("Starting Bomb Adding");
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.DRAGON_BREATH);
-			System.out.println(".");
+			System.out.print(".");
 		}
 		return res;
 	}

@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.*;
 
 /**
  * @serial 0
- * @since 2022-03-03
+ * @since 2022-03-03 ~ 2022-03-26
  * @author ToufuSekka
  */
 public class SpecialItems {
@@ -16,7 +16,6 @@ public class SpecialItems {
 	private ItemMeta ComMeta;
 
 	/**
-	 * 
 	 * @param material  Item Type
 	 * @param Amounts   At least 1, Item Values
 	 * @param ItemName  write CustomName, when you need
@@ -42,6 +41,43 @@ public class SpecialItems {
 		}
 
 		Item.setItemMeta(ComMeta);
+		return Item;
+	}
+	
+	/**
+	 * @since 2022-03-26
+	 * @param Amounts
+	 * @param Power
+	 * @param FireEffect
+	 * @param ItemName
+	 * @param LoreDatas
+	 * @return
+	 */
+	public ItemStack Lored_Fire(int Amounts, int Power, FireworkEffect FireEffect, String ItemName, String[] LoreDatas) {
+		List<String> LoreData = new ArrayList<String>();
+		Item = new ItemStack(Material.FIREWORK_ROCKET, Amounts);
+		FireworkMeta FireMeta = (FireworkMeta) Item.getItemMeta();
+		
+		FireMeta.setPower(Power);
+		
+		if(FireEffect != null) {
+			FireMeta.addEffect(FireEffect);
+		}
+		
+		// Add CustomName when it exists
+		if (!ItemName.isEmpty()) {
+			FireMeta.setDisplayName(ItemName);
+		}
+
+		// Adding LoreData
+		if (LoreDatas.length > 0) {
+			for (String str : LoreDatas) {
+				LoreData.add(str);
+			}
+			FireMeta.setLore(LoreData);
+		}
+
+		Item.setItemMeta(FireMeta);
 		return Item;
 	}
 }
