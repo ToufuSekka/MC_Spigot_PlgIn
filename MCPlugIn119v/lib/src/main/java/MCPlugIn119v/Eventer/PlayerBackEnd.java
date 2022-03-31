@@ -52,11 +52,11 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 		P.getWorld().dropItemNaturally(P.getLocation(), Head);
 
 		if (P.getBedSpawnLocation() == null) {
-			RevelveTime = 24;
+			RevelveTime = 12;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		} else {
-			RevelveTime = 20;
+			RevelveTime = 12;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}

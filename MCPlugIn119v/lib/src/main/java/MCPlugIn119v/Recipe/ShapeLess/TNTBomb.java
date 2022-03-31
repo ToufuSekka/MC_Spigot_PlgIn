@@ -1,4 +1,4 @@
-package MCPlugIn119v.Recipe.SahpeLess;
+package MCPlugIn119v.Recipe.ShapeLess;
 
 import org.bukkit.*;
 import org.bukkit.inventory.*;
@@ -18,7 +18,6 @@ public class TNTBomb {
 				Bukkit.addRecipe(Granade(plugIn, x));
 				x++;
 			}
-			System.out.println("TNTBomb Added");
 			break;
 		case Radioactive:
 			x = 1;
@@ -26,7 +25,6 @@ public class TNTBomb {
 				Bukkit.addRecipe(RadioactiveBomb(plugIn, x));
 				x++;
 			}
-			System.out.println("RadioactiveBomb Added");
 			break;
 		case Nuclear:
 			x = 2;
@@ -34,7 +32,6 @@ public class TNTBomb {
 				Bukkit.addRecipe(NuclearBomb(plugIn, x));
 				x++;
 			}
-			System.out.println("RadioactiveBomb Added");
 			break;
 		default:
 			break;
@@ -51,11 +48,12 @@ public class TNTBomb {
 		ItemStack results = new SpecialItems().LoredItem(Material.SPLASH_POTION, 1, "Granade", ForLore);
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
-		System.out.print("Starting Bomb Adding");
+		System.out.println("Granade Adding");
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
 			System.out.print(".");
 		}
+		System.out.println("");
 		return res;
 	}
 
@@ -71,12 +69,13 @@ public class TNTBomb {
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 		
-		System.out.print("Starting Bomb Adding");
+		System.out.println("Radioactive Adding");
 		res.addIngredient(Material.DRAGON_BREATH);
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.TNT);
 			System.out.print(".");
 		}
+		System.out.println("");
 		return res;
 	}
 
@@ -91,11 +90,12 @@ public class TNTBomb {
 
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 		
-		System.out.print("Starting Bomb Adding");
+		System.out.println("Nuclear Adding");
 		for (int y = 0; y < FirePower; y++) {
 			res.addIngredient(Material.DRAGON_BREATH);
 			System.out.print(".");
 		}
+		System.out.println("");
 		return res;
 	}
 }

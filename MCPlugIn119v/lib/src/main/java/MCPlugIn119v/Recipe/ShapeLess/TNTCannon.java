@@ -1,4 +1,4 @@
-package MCPlugIn119v.Recipe.SahpeLess;
+package MCPlugIn119v.Recipe.ShapeLess;
 
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.java.*;
