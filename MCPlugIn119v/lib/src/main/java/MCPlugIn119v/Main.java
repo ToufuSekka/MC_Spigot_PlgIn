@@ -1,16 +1,19 @@
 package MCPlugIn119v;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.*;
 
 import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
+import MCPlugIn119v.Supporter.Discord.*;
 import MCPlugIn119v.Supporter.Twitters.*;
+
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
+
 import MCPlugIn119v.Commander.*;
+
 import MCPlugIn119v.Recipe.EnumSet.*;
 import MCPlugIn119v.Recipe.ShapeLess.*;
 
@@ -23,20 +26,22 @@ public class Main extends JavaPlugin {
 	private LocalDateTime LDT;
 	private Date D_Open;
 	private Date D_Close;
-	
+
 	@Override
 	public void onLoad() {
 		LDT = LocalDateTime.now().plusHours(24);
-		
+
 		D_Open = new Date();
 		D_Close = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
-		
+
 		new PlayerDataSorter().Sorting();
-		
-		new TwitMain().ServerMSGTwit("Minecraft Server open." + "\nIf you have opinions, Please send DM."
-				+ "\nServerType : JE 1.18.2" + "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)"
-				+ "\nRunning Time : " + D_Open + "~" + D_Close + "\nConnection ServerIP : wint0719.codns.com"
-				+ "\n#MinecraftServer #Minecraft");
+
+		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.18.2"
+				+ "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)" + "\nRunning Time : " + D_Open
+				+ "~" + D_Close + "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer #Minecraft");
+
+		new DscdMain("Minecraft Server open." + "\nServerType : JE 1.18.2" + "\nRunning Time : " + D_Open + "~"
+				+ D_Close + "\nConnection ServerIP : wint0719.codns.com");
 	}
 
 	@Override
@@ -58,7 +63,9 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		new TwitMain().ServerMSGTwit("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
+		new TwitMain("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
 				+ "\nCommunity : https://cafe.naver.com/mcneptune" + "\n#MinecraftServer #Minecraft");
+
+		new DscdMain("Server is Closed." + "\nSee you next time.");
 	}
 }

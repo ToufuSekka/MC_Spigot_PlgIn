@@ -13,11 +13,10 @@ public class TwitMain {
 	private final String ComsumeAPIKey = "whrrUAD92F19T0kpHM2PQnm6y";
 	private final String ComsumeAPI_Secret = "IGbZONaY7rvTthNUHQc02Y6JsF9VJwznc7NWdUctyzWCNrMQeo";
 	
-	public void ServerMSGTwit(String TweetText) {
-
+	public TwitMain(String TweetText) {
 		TwitterClient TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
 				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
 
 		Tweet twt = TwitClie.postTweet(TweetText);
-	}
+	}	
 }
