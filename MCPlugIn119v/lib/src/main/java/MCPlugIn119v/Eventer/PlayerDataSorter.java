@@ -6,8 +6,7 @@ import MCPlugIn119v.Supporter.SQL.*;
 
 /**
  * @since 2022-02-28
- * @author ToufuSekka
- * 일단, 데이터 정리기.
+ * @author ToufuSekka 일단, 데이터 정리기.
  */
 public class PlayerDataSorter extends SQLMain {
 
@@ -35,7 +34,7 @@ public class PlayerDataSorter extends SQLMain {
 
 			if (FileName.endsWith(Excepter)) {
 				BL = ReservedSQL(SQLCMD_Reserved.SearchUser, new String[] { FileName.replace(Excepter, "") });
-				System.out.print("read  Data :: " + FileName);
+				System.out.print("read  Data :: " + FileName + ", ");
 			}
 
 			if (BL) {

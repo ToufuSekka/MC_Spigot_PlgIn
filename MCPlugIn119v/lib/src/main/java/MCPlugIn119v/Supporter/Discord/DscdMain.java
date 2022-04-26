@@ -5,11 +5,8 @@ import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 
-/**
- * 디코용
- * 
+/**디코용
  * @author ToufuSekka
- *
  */
 public class DscdMain {
 
