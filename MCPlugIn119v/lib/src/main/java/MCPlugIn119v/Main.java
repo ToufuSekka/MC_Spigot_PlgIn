@@ -1,8 +1,5 @@
 package MCPlugIn119v;
 
-import java.time.*;
-import java.util.*;
-
 import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
@@ -22,28 +19,20 @@ import MCPlugIn119v.Recipe.ShapeLess.*;
  */
 public class Main extends JavaPlugin {
 
-	private LocalDateTime LDT;
-	private Date D_Open;
-	private Date D_Close;
-
 	@Override
 	public void onLoad() {
-		LDT = LocalDateTime.now().plusHours(24);
-
-		D_Open = new Date();
-		D_Close = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
-
 		new PlayerDataSorter().Sorting();
 
 		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.18.2"
-				+ "\nCommunity : https://cafe.naver.com/mcneptune (Only Korean Support)" + "\nRunning Time : " + D_Open
-				+ "~" + D_Close + "\nConnection ServerIP : wint0719.codns.com" + "\n#MinecraftServer #Minecraft");
+				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
+				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8"
+				+ "\nConnection ServerIP : mc-neptuneserver.servegame.com" + "\n#MinecraftServer #Minecraft");
 
 	}
 
 	@Override
 	public void onEnable() {
-		// Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
 		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 
 		// BombSet

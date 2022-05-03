@@ -2,11 +2,9 @@ package MCPlugIn119v.Supporter.SQL;
 
 import java.sql.*;
 
-/**
- * 데이터베이스 관련 보조 시스탬
+/**데이터베이스 관련 보조 시스탬
  * @since 2022-2-27
- * @author TouhuSekka
- */
+ * @author TouhuSekka*/
 public class SQLMain {
 	// private static String SERVER_local= "jdbc:mysql://localhost:3306/mctotalsys";
 	private static String SERVER = "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
@@ -17,12 +15,10 @@ public class SQLMain {
 
 	private String Query;
 
-	/**
-	 * 이미 지정된 것에 관한 시스탬
+	/**이미 지정된 것에 관한 시스탬
 	 * @param Type Rigist, Login, SearchUser, GameLeft중 하나의 선택
 	 * @param Datas 상세 데이터
-	 * @return 성공하면 true, 아니면 false
-	 */
+	 * @return 성공하면 true, 아니면 false*/
 	public boolean ReservedSQL(SQLCMD_Reserved Type, String[] Datas) {
 		boolean Checker = false;
 		this.Query = Type.GetQuery();
@@ -69,7 +65,6 @@ public class SQLMain {
 			// This is just TESTSERVER VERSION!
 			// DO NOT use for public mc_Server
 			// con = DriverManager.getConnection(SERVER_local,"root",null);
-
 			con = DriverManager.getConnection(SERVER, "mcplayer", "vonrk08217");
 		} catch (SQLException SQLe) {
 			SQLe.printStackTrace();

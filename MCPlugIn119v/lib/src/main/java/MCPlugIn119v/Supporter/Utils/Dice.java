@@ -10,7 +10,7 @@ public class Dice {
 	private Random Ran;
 	private boolean WIN;
 
-	/**
+	/** 100분율의 퍼센테이지를 나타냄
 	 * @param percent 0 ~ 100
 	 * @exception IllegalArgumentException When less 0
 	 */
@@ -28,9 +28,10 @@ public class Dice {
 	}
 
 	/**
+	 *  0에서 어떤 수까지 특정 숫자의 당첨
+	 * @param DiceNumber 0부터 시작되는 주사위
+	 * @param WinNumber 당첨숫자를 물리적으로 기입.
 	 * 
-	 * @param DiceNumber
-	 * @param WinNumber
 	 */
 	public Dice(int DiceNumber, int[] WinNumber) {
 		if (DiceNumber < 0)
@@ -55,10 +56,10 @@ public class Dice {
 	}
 
 	/**
-	 * 
-	 * @param BaseDice
-	 * @param MinWin
-	 * @param MaxWin
+	 * 0에서 주사위 수까지 특정구간의 당첨
+	 * @param BaseDice 0부터 시작되는 주사위
+	 * @param MinWin 최소 당첨 숫자
+	 * @param MaxWin 최대 당첨 숫자
 	 */
 	public Dice(int BaseDice, int MinWin, int MaxWin) {
 		if (BaseDice < 0)
@@ -79,7 +80,17 @@ public class Dice {
 			WIN = false;
 
 	}
-
+	
+	/**
+	 * 0~특정 지정된 숫자 갯수만큼 숫자 뽑기
+	 * @param BaseDice
+	 * @param Wins
+	 * @deprecated 실험중/제작중. 아직 사용금지.
+	 */
+	public Dice(int BaseDice, int Wins) {
+		
+	}
+	
 	public boolean GetWin() {
 		return WIN;
 	}
