@@ -9,7 +9,7 @@ import java.util.*;
 public class Dice {
 	private Random Ran;
 	private boolean WIN;
-
+	
 	/** 100분율의 퍼센테이지를 나타냄
 	 * @param percent 0 ~ 100
 	 * @exception IllegalArgumentException When less 0
@@ -78,17 +78,6 @@ public class Dice {
 			WIN = true;
 		else
 			WIN = false;
-
-	}
-	
-	/**
-	 * 0~특정 지정된 숫자 갯수만큼 숫자 뽑기
-	 * @param BaseDice
-	 * @param Wins
-	 * @deprecated 실험중/제작중. 아직 사용금지.
-	 */
-	public Dice(int BaseDice, int Wins) {
-		
 	}
 	
 	public boolean GetWin() {
