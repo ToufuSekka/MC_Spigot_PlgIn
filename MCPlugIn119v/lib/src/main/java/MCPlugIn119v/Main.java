@@ -51,7 +51,8 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 
 		new TwitMain("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
-				+ "\nCommunity : https://cafe.naver.com/mcneptune" + "\n#MinecraftServer #Minecraft");
+				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
+				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\n#MinecraftServer #Minecraft");
 
 	}
 }

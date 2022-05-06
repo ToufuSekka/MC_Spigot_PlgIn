@@ -18,5 +18,5 @@ public class TwitMain {
 				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
 
 		Tweet twt = TwitClie.postTweet(TweetText);
-	}	
+	}
 }
