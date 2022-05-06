@@ -17,9 +17,6 @@ public class Bank extends SpecialItems {
 		Lists = new MerchantRecipe[4];
 
 		// Rigist Items
-		ItemStack KrCheckPaper = LoredItem(Material.PAPER, 1, "수표(64블럭)",
-				new String[] { "64블럭", "아래의 국제은행에서 보증합니다.", "-눈사람 은행-" });
-
 		ItemStack CheckPaper = LoredItem(Material.PAPER, 1, "ISBE Paper(For 64 Blocks)",
 				new String[] { "64 Blocks", "This guarantees in the Bank", "-International SnowmanBank-" });
 

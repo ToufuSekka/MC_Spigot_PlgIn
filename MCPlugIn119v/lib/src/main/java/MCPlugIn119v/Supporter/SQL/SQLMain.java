@@ -7,7 +7,7 @@ import java.sql.*;
  * @author TouhuSekka*/
 public class SQLMain {
 	// private static String SERVER_local= "jdbc:mysql://localhost:3306/mctotalsys";
-	private static String SERVER = "jdbc:mysql://wint0719.codns.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
+	private static String SERVER = "jdbc:mysql://mc-neptuneserver.servegame.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 
 	private Connection con;
 	private PreparedStatement ppst;

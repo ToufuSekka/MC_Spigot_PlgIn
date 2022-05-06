@@ -4,12 +4,9 @@ import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
 import MCPlugIn119v.Supporter.Twitters.*;
-
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
-
 import MCPlugIn119v.Commander.*;
-
 import MCPlugIn119v.Recipe.EnumSet.*;
 import MCPlugIn119v.Recipe.ShapeLess.*;
 
@@ -21,8 +18,8 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-		new PlayerDataSorter().Sorting();
 
+		new PlayerDataSorter().Sorting();
 		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.18.2"
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
 				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8"
