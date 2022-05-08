@@ -20,11 +20,10 @@ public class Main extends JavaPlugin {
 	public void onLoad() {
 
 		new PlayerDataSorter().Sorting();
+
 		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.18.2"
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
-				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8"
-				+ "\nConnection ServerIP : mc-neptuneserver.servegame.com" + "\n#MinecraftServer #Minecraft");
-
+				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\n#MinecraftServer #Minecraft");
 	}
 
 	@Override
