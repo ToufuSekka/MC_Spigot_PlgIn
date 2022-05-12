@@ -13,6 +13,11 @@ import org.bukkit.inventory.meta.*;
 
 import MCPlugIn119v.Supporter.SQL.*;
 
+
+/**
+ * 플레이어에 관한 특수 서버사이드, 이벤트
+ * @author ToufuSekka
+ */
 public class PlayerBackEnd extends SQLMain implements Listener {
 	private Player P;
 
@@ -39,6 +44,17 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 	}
 
 	@EventHandler
+	public void PlayerDeath(PlayerDeathEvent PDe) {
+		P = PDe.getEntity().getPlayer();
+		ItemStack Head = new ItemStack(Material.PLAYER_HEAD);
+		SkullMeta MetaHead = (SkullMeta) Head.getItemMeta();
+
+		MetaHead.setOwningPlayer(P);
+		Head.setItemMeta(MetaHead);
+		P.getWorld().dropItemNaturally(P.getLocation(), Head);
+	}
+	
+	@Deprecated
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		P = PDe.getEntity().getPlayer();
 
@@ -52,11 +68,11 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 		P.getWorld().dropItemNaturally(P.getLocation(), Head);
 
 		if (P.getBedSpawnLocation() == null) {
-			RevelveTime = 12;
+			RevelveTime = 0;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		} else {
-			RevelveTime = 12;
+			RevelveTime = 0;
 			LDT = LocalDateTime.now().plusMinutes(RevelveTime);
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}

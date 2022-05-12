@@ -24,7 +24,6 @@ public class NatureItemDrop implements Listener {
 			if (Dc.GetWin()) {
 				Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);
 			}
-			;
 		}
 	}
 
