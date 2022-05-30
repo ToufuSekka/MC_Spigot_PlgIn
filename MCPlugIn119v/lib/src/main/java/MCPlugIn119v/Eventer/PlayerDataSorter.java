@@ -34,7 +34,7 @@ public class PlayerDataSorter extends SQLMain {
 
 			if (FileName.endsWith(Excepter)) {
 				BL = ReservedSQL(SQLCMD_Reserved.SearchUser, new String[] { FileName.replace(Excepter, "") });
-				System.out.print("read  Data :: " + FileName + ", ");
+				System.out.println("read  Data :: " + FileName);
 			}
 
 			if (BL) {

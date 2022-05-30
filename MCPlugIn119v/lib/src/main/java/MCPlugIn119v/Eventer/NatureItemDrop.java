@@ -27,11 +27,12 @@ public class NatureItemDrop implements Listener {
 		}
 	}
 
+	@EventHandler
 	public void AllEntityDeath(EntityDeathEvent EDE) {
 		Le = EDE.getEntity();
 		Dc = null;
 		RewardIS = new ItemStack(Material.NETHER_WART);
-		Dc = new Dice(0.01f);// Percentage;
+		Dc = new Dice(1500, new int[] {15});// Percentage;
 
 		if (Dc.GetWin())
 			Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);
