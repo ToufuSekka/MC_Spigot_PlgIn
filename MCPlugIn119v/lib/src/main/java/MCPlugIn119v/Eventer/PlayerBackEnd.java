@@ -29,6 +29,8 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 		P = PJe.getPlayer();
 		String str = P.getUniqueId().toString();
 
+		P.setStatistic(Statistic.PLAY_ONE_MINUTE,0);
+		
 		if (!ReservedSQL(SQLCMD_Reserved.SearchUser, new String[] { str })) {
 			ReservedSQL(SQLCMD_Reserved.Rigist, new String[] { str });
 		}
@@ -39,6 +41,8 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 	@EventHandler
 	public void ServerQuit(PlayerQuitEvent PQe) {
 		P = PQe.getPlayer();
+		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
+		
 		String str = P.getUniqueId().toString();
 		ReservedSQL(SQLCMD_Reserved.GameLeft, new String[] { str });
 	}
