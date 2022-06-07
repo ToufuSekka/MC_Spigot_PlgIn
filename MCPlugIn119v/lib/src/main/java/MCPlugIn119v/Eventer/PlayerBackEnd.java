@@ -37,7 +37,12 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 
 		ReservedSQL(SQLCMD_Reserved.Login, new String[] { str });
 	}
-
+	
+	@EventHandler
+	public void PlayerKick(PlayerQuitEvent PQe) {
+		
+	}
+	
 	@EventHandler
 	public void ServerQuit(PlayerQuitEvent PQe) {
 		P = PQe.getPlayer();

@@ -8,17 +8,89 @@ import java.sql.*;
 public class SQLMain {
 	// private static String SERVER_local= "jdbc:mysql://localhost:3306/mctotalsys";
 	private static String SERVER = "jdbc:mysql://mc-neptuneserver.servegame.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
-
+	
 	private Connection con;
 	private PreparedStatement ppst;
 	private ResultSet Res;
-
+	
+	private SQLCMD_Reserved ReservedType;
+	private String UUID;
+	
 	private String Query;
 
-	/**이미 지정된 것에 관한 시스탬
-	 * @param Type Rigist, Login, SearchUser, GameLeft중 하나의 선택
-	 * @param Datas 상세 데이터
-	 * @return 성공하면 true, 아니면 false*/
+	public SQLMain(SQLCMD_Reserved Reserve, String UUID) {
+		INIT();
+		Query = Reserve.GetQuery();
+		try {
+			ppst = con.prepareStatement(Query);
+
+			this.ppst.setString(1, UUID);// UUID
+			
+			switch (Reserve) {
+			case Rigist:
+				this.ppst.executeUpdate();
+				break;
+			case Login:
+				this.ppst.executeUpdate();
+				break;
+			case SearchUser:
+				this.Res = this.ppst.executeQuery();//SoloSearcher
+				break;
+			case GameLeft:
+				this.ppst.executeUpdate();
+				break;
+			default:
+				break;
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		CloseAll();
+	}
+	
+	public SQLMain() {
+		INIT();
+		Query = ReservedType.GetQuery();
+		try {
+			ppst = con.prepareStatement(Query);
+
+			this.ppst.setString(1, UUID);// UUID
+			
+			switch (ReservedType) {
+			case Rigist:
+				this.ppst.executeUpdate();
+				break;
+			case Login:
+				this.ppst.executeUpdate();
+				break;
+			case SearchUser:
+				this.Res = this.ppst.executeQuery();//SoloSearcher
+				break;
+			case GameLeft:
+				this.ppst.executeUpdate();
+				break;
+			default:
+				break;
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		CloseAll();
+		
+		CloseAll();
+	}
+	
+	public void SetReserve(SQLCMD_Reserved Type) {
+		this.ReservedType = Type;
+	}
+	
+	public SQLCMD_Reserved GetReserve() {
+		return this.ReservedType;
+	}
+	
+	
 	public boolean ReservedSQL(SQLCMD_Reserved Type, String[] Datas) {
 		boolean Checker = false;
 		this.Query = Type.GetQuery();
@@ -43,9 +115,17 @@ public class SQLMain {
 				Checker = this.Res.next();
 				break;
 			case GameLeft:
-				this.ppst.setString(1, Datas[0]);// UUID
+				this.ppst.setString(1, Datas[0]);// UUID, LiftTime
 				this.ppst.executeUpdate();
 				Checker = true;
+				break;
+			case TimeChecker:
+				this.ppst.setString(1, Datas[0]);// UUID
+				this.Res = this.ppst.executeQuery();
+				int Timer = this.Res.getInt(1);
+				if(Timer > 0)
+					Checker = true;
+					else Checker = false;
 				break;
 			default:
 				Checker = false;
@@ -60,6 +140,8 @@ public class SQLMain {
 		return Checker;
 	}
 
+	
+	
 	private void INIT() {
 		try {
 			// This is just TESTSERVER VERSION!
@@ -83,5 +165,5 @@ public class SQLMain {
 		} catch (SQLException SQLe) {
 			// To Something?
 		}
-	}
+	}	
 }
