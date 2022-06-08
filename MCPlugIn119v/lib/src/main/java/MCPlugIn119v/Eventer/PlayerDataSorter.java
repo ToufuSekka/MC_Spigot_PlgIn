@@ -8,7 +8,7 @@ import MCPlugIn119v.Supporter.SQL.*;
  * @since 2022-02-28
  * @author ToufuSekka 일단, 데이터 정리기.
  */
-public class PlayerDataSorter extends SQLMain {
+public class PlayerDataSorter {
 
 	public void Sorting() {
 		// That is Linux Ubuntu
@@ -29,15 +29,14 @@ public class PlayerDataSorter extends SQLMain {
 
 	private void FileChecker(File[] FileList, String Excepter) {
 		for (File f : FileList) {
-			boolean BL = true;
 			String FileName = f.getName();
+			SQLMain UserSearcher = new SQLMain(FileName.replace(Excepter, ""));
 
 			if (FileName.endsWith(Excepter)) {
-				BL = ReservedSQL(SQLCMD_Reserved.SearchUser, new String[] { FileName.replace(Excepter, "") });
-				System.out.println("read  Data :: " + FileName);
+				System.out.print("read  Data :: " + FileName + ", ");
 			}
 
-			if (BL) {
+			if (UserSearcher.UserCheck()) {
 				System.out.println("Exist User : -> " + FileName);
 			} else {
 				System.out.println("Deleted : -> " + FileName);

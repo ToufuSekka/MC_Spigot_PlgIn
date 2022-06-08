@@ -13,43 +13,48 @@ import org.bukkit.inventory.meta.*;
 
 import MCPlugIn119v.Supporter.SQL.*;
 
-
 /**
  * 플레이어에 관한 특수 서버사이드, 이벤트
+ * 
  * @author ToufuSekka
  */
-public class PlayerBackEnd extends SQLMain implements Listener {
+public class PlayerBackEnd implements Listener {
 	private Player P;
 
 	private LocalDateTime LDT;
 	private Date D;
 
+	private SQLMain sqlSetter;
+
 	@EventHandler
 	public void ServerJoin(PlayerJoinEvent PJe) {
 		P = PJe.getPlayer();
 		String str = P.getUniqueId().toString();
+		sqlSetter = new SQLMain(str);
 
-		P.setStatistic(Statistic.PLAY_ONE_MINUTE,0);
-		
-		if (!ReservedSQL(SQLCMD_Reserved.SearchUser, new String[] { str })) {
-			ReservedSQL(SQLCMD_Reserved.Rigist, new String[] { str });
+		if (sqlSetter.UserCheck()) {
+			if (sqlSetter.GetLeftTime() > 0) {
+				sqlSetter.Sign();
+				P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
+			} else {
+				P.kickPlayer("Nothing Playing Time. You should ask to ADMINs");
+			}
+		} else {
+			sqlSetter.Rigist();
 		}
+		sqlSetter = null;
+	}
 
-		ReservedSQL(SQLCMD_Reserved.Login, new String[] { str });
-	}
-	
-	@EventHandler
-	public void PlayerKick(PlayerQuitEvent PQe) {
-		
-	}
-	
 	@EventHandler
 	public void ServerQuit(PlayerQuitEvent PQe) {
 		P = PQe.getPlayer();
-		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
-		
 		String str = P.getUniqueId().toString();
-		ReservedSQL(SQLCMD_Reserved.GameLeft, new String[] { str });
+		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
+
+		sqlSetter = new SQLMain(str);
+		sqlSetter.SetPlayTime(Time);
+		sqlSetter.GameLeave();
+		sqlSetter = null;
 	}
 
 	@EventHandler
@@ -62,7 +67,7 @@ public class PlayerBackEnd extends SQLMain implements Listener {
 		Head.setItemMeta(MetaHead);
 		P.getWorld().dropItemNaturally(P.getLocation(), Head);
 	}
-	
+
 	@Deprecated
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		P = PDe.getEntity().getPlayer();

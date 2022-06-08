@@ -18,12 +18,9 @@ public class SQLMain {
 	private ResultSet Res;
 
 	// IN_Class
-	private SQLCMD_Reserved ReservedType;
 	private String UUID;
-	private String MainQuery;
-	private Boolean Checing;
 
-	private int PlayTime, LestTime;
+	private int PlayTime, LeftTime;
 
 	public SQLMain(String UUID) {
 		if (UUID.isEmpty())
@@ -32,101 +29,19 @@ public class SQLMain {
 		this.UUID = UUID;
 	}
 
-	public SQLMain(SQLCMD_Reserved Reserve) {
-
-	}
-
-	// Reserver
-	public void SetReserve(SQLCMD_Reserved Type) {
-		this.ReservedType = Type;
-	}
-
-	public SQLCMD_Reserved GetReserve() {
-		return this.ReservedType;
-	}
-
 	// UUID
 	public void SetUUID(String MC_UUID) {
 		this.UUID = MC_UUID;
-	}
-
-	// BooleanChecker
-	public Boolean SQLChecker() {
-		return this.Checing;
 	}
 
 	public void SetPlayTime(int PlayTime_SCD) {
 		this.PlayTime = PlayTime_SCD;
 	};
 
-	public Boolean ExecuteReserve() {
-		if (ReservedType == null)
-			throw new NullPointerException("Set ReserveSQL Type");
-		boolean Fincheck = false;
-
-		switch (ReservedType) {
-		case Rigist:
-			Fincheck = Rigist();
-			break;
-		case Login:
-			Fincheck = Sign();
-			break;
-		case SearchUser:
-			Fincheck = UserCheck();
-			break;
-		case TimeLimit:
-			break;
-		case GameLeft:
-			Fincheck = GameLeave();
-			break;
-		default:
-			break;
-		}
-		return Fincheck;
-	}
-
-	@Deprecated
-	public void ReservedSQL(SQLCMD_Reserved Type, String[] Datas) {
-		INIT();
-		try {
-			ppst = con.prepareStatement(MainQuery);
-
-			switch (Type) {
-			case Rigist:
-				this.ppst.setString(1, Datas[0]);// UUID
-				this.ppst.executeUpdate();
-				break;
-			case Login:
-				this.ppst.setString(1, Datas[0]);// UUID
-				this.ppst.executeUpdate();
-				break;
-			case SearchUser:
-				this.ppst.setString(1, Datas[0]);// UUID
-				this.Res = this.ppst.executeQuery();
-				break;
-			case GameLeft:
-				this.ppst.setString(1, Datas[0]);// UUID
-				this.ppst.executeUpdate();
-				break;
-			case TimeLimit:
-				this.ppst.setString(1, Datas[0]);// UUID
-				this.Res = this.ppst.executeQuery();
-				int Timer = this.Res.getInt(1);
-				break;
-			default:
-				break;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		CloseAll();
-	}
-
 	public boolean Rigist() {
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("INSERT INTO userdata(UUID) VALUE (?);");
+			this.ppst = con.prepareStatement("INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -172,24 +87,25 @@ public class SQLMain {
 	}
 
 	public boolean GameLeave() {
-		//시간을 제고-> 시간을 빼고-> 저장한다.
-		LestTime = GetLeftTime();
 
 		if (this.PlayTime < 0) {
 			throw new NullPointerException("Insert User PlayTime(Seconds)");
 		}
 
+		// 시간을 제고-> 시간을 빼고-> 저장한다.
+		LeftTime = GetLeftTime();
+
+		int TotalTime = LeftTime - PlayTime;
+
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("UPDATE userdata SET (LogOutTime,Lifetime)= (CURRENT_TIMESTAMP,?) WHERE UUID = ?;");
-			this.ppst.setString(1, this.UUID);// UUID
+			this.ppst = con.prepareStatement(
+					"UPDATE userdata SET (LogOutTime,Lifetime)= (CURRENT_TIMESTAMP,?) WHERE UUID = ?;");
+			this.ppst.setInt(1, TotalTime);
+			this.ppst.setString(2, this.UUID);
 			this.ppst.executeQuery();
 			this.ppst.close();
-			
-			this.ppst = con.prepareStatement("UPDATE userdata SET LogOutTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
-			this.ppst.setString(1, this.UUID);// UUID
-			this.ppst.executeQuery();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -209,8 +125,6 @@ public class SQLMain {
 
 			if (Res.next()) {
 				Result = Res.getInt(1);
-			} else {
-				//
 			}
 
 		} catch (Exception e) {
