@@ -1,19 +1,7 @@
 package MCPlugIn119v.Supporter.SQL;
 
 public enum SQLCMD_Reserved {
-	Rigist("INSERT INTO userdata(UUID) VALUE (?);"),
-	SearchUser("SELECT 'UUID' FROM userdata WHERE UUID=?;"),
-	Login("UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;"),
-	GameLeft("UPDATE userdata SET LogOutTime= CURRENT_TIMESTAMP WHERE UUID = ?;"),
-	TimeChecker("SELECT 'Lifetime' FROM userdata WHERE UUID=?;");
-	
-	private final String Type;
-	
-	SQLCMD_Reserved(String Type){
-		this.Type = Type;
-	};
-	
-	public String GetQuery() {
-		return this.Type;
-	}
+	Rigist, SearchUser, Login, GameLeft("UPDATE userdata SET LogOutTime= CURRENT_TIMESTAMP WHERE UUID = ?;"),
+	GameLeft_New("UPDATE userdata SET (LogOutTime,Lifetime)= (CURRENT_TIMESTAMP,?) WHERE UUID = ?;"),
+	TimeLimit("SELECT 'Lifetime' FROM userdata WHERE UUID=?;");
 }
