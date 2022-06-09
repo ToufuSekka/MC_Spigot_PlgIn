@@ -38,6 +38,8 @@ public class PlayerBackEnd implements Listener {
 				P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
 			} else {
 				P.kickPlayer("Nothing Playing Time. You should ask to ADMINs");
+				sqlSetter = null;
+				return;
 			}
 		} else {
 			sqlSetter.Rigist();
