@@ -1,4 +1,4 @@
-package MCPlugIn119v.Supporter.SQL;
+package MCPlugIn119v.Supporter;
 
 import java.sql.*;
 

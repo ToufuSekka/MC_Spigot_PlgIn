@@ -3,7 +3,7 @@ package MCPlugIn119v;
 import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
-import MCPlugIn119v.Supporter.Twitters.*;
+import MCPlugIn119v.Supporter.*;
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
 import MCPlugIn119v.Commander.*;
@@ -18,15 +18,13 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onLoad() {
-		/*
-		 * new PlayerDataSorter().Sorting();
-		 * 
-		 * new TwitMain("Minecraft Server open." +
-		 * "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.18.2" +
-		 * "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune" +
-		 * "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" +
-		 * "\nThis server is Genuine User Only!" + "\n#MinecraftServer #Minecraft");
-		 */
+
+		new PlayerDataSorter().Sorting();
+
+		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.19"
+				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
+				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\nThis server is Genuine User Only!"
+				+ "\n#MinecraftServer #Minecraft");
 	}
 
 	@Override
@@ -48,13 +46,9 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		/*
-		 * new TwitMain("Server is Closed. \nIf you have opinions, Please DM." +
-		 * "\nSee you next time." +
-		 * "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune" +
-		 * "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" +
-		 * "\n#MinecraftServer #Minecraft");
-		 */
 
+		new TwitMain("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
+				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
+				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\n#MinecraftServer #Minecraft");
 	}
 }

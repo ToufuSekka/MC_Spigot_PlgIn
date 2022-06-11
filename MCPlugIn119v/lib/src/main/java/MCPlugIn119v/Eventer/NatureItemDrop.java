@@ -6,7 +6,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.inventory.*;
 
-import MCPlugIn119v.Supporter.Utils.*;
+import MCPlugIn119v.Supporter.*;
 
 public class NatureItemDrop implements Listener {
 	private ItemStack RewardIS;

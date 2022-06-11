@@ -1,7 +1,5 @@
 package org.spigotmc.spigot.CstItems;
 
-import java.util.*;
-
 import org.bukkit.*;
 import org.bukkit.enchantments.*;
 import org.bukkit.inventory.*;
@@ -27,28 +25,6 @@ public class CustItem {
 		}
 		
 		this.Item.setItemMeta(this.ComMeta);
-		
-		return this.Item;
-	}
-	
-	public ItemStack PoweredRocket(int Power, int Stacks, FireworkEffect.Builder Effect, String ItemName,
-			String[] LoreData) {
-		this.LoreData.clear();
-
-		this.Item = new ItemStack(Material.FIREWORK_ROCKET, Stacks);
-		FireworkMeta FWmeta = (FireworkMeta) this.Item.getItemMeta();
-		
-		if (Effect != null)
-			FWmeta.addEffect(Effect.build());
-
-		if (ItemName != null)
-			FWmeta.setDisplayName(ItemName);
-
-		if (LoreData != null) {
-			for (String str : LoreData)
-				this.LoreData.add(str);
-			FWmeta.setLore(this.LoreData);
-		}
 		
 		return this.Item;
 	}

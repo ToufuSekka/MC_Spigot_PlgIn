@@ -1,4 +1,4 @@
-package MCPlugIn119v.Supporter.Twitters;
+package MCPlugIn119v.Supporter;
 
 import io.github.redouane59.twitter.*;
 import io.github.redouane59.twitter.dto.tweet.*;

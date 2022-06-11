@@ -11,7 +11,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 
-import MCPlugIn119v.Supporter.SQL.*;
+import MCPlugIn119v.Supporter.*;
 
 /**
  * 플레이어에 관한 특수 서버사이드, 이벤트
