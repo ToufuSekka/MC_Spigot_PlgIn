@@ -24,9 +24,9 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:30.1.1-jre'
-    implementation("io.github.redouane59.twitter:twittered:2.15")
+    implementation("io.github.redouane59.twitter:twittered:2.16")
         
-    compileOnly 'org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
 }
 
 tasks.named('test') {
