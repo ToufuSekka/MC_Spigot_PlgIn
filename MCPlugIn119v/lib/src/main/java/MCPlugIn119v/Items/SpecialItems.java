@@ -3,6 +3,7 @@ package MCPlugIn119v.Items;
 import java.util.*;
 
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 
@@ -78,6 +79,13 @@ public class SpecialItems {
 		}
 
 		Item.setItemMeta(FireMeta);
+		return Item;
+	}
+	
+	public ItemStack CustEnchant(Material material, String ItemName, Map<Enchantment,Integer> Encnants) {
+		Item = new ItemStack(material);
+		Item.addEnchantments(Encnants);
+		
 		return Item;
 	}
 }

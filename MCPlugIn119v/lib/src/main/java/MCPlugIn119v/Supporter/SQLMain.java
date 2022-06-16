@@ -9,7 +9,8 @@ import java.sql.*;
  * @author TouhuSekka
  */
 public class SQLMain {
-	// private static String SERVER_local= "jdbc:mysql://localhost:3306/mctotalsys";
+	// private static String SERVER_local =
+	// "jdbc:mysql://wint0719.ipdisk.co.kr:3306/mctotalsys";
 	private static String SERVER = "jdbc:mysql://mc-neptuneserver.servegame.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 
 	// SQL
@@ -94,16 +95,15 @@ public class SQLMain {
 
 		// 시간을 제고-> 시간을 빼고-> 저장한다.
 		LeftTime = GetLeftTime();
-
 		int TotalTime = LeftTime - PlayTime;
 
 		INIT();
 		try {
-			this.ppst = con.prepareStatement(
-					"UPDATE userdata SET (LogOutTime,Lifetime)= (CURRENT_TIMESTAMP,?) WHERE UUID = ?;");
+			this.ppst = con
+					.prepareStatement("UPDATE userdata SET LogOutTime=CURRENT_TIMESTAMP, Lifetime=? WHERE UUID=?;");
 			this.ppst.setInt(1, TotalTime);
 			this.ppst.setString(2, this.UUID);
-			this.ppst.executeQuery();
+			this.ppst.executeUpdate();
 			this.ppst.close();
 
 		} catch (Exception e) {
@@ -119,7 +119,7 @@ public class SQLMain {
 		INIT();
 		try {
 			// Search
-			this.ppst = con.prepareStatement("SELECT 'Lifetime' FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement("SELECT Lifetime FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 
@@ -139,7 +139,7 @@ public class SQLMain {
 		try {
 			// This is just TESTSERVER VERSION!
 			// DO NOT use for public mc_Server
-			// con = DriverManager.getConnection(SERVER_local,"root",null);
+			// con = DriverManager.getConnection(SERVER_local, "root", "vonrk08217!");
 			con = DriverManager.getConnection(SERVER, "mcplayer", "vonrk08217");
 		} catch (SQLException SQLe) {
 			SQLe.printStackTrace();

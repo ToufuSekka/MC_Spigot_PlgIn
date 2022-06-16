@@ -25,14 +25,14 @@ public class Main extends JavaPlugin {
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
 				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\nThis server is Genuine User Only!"
 				+ "\n#MinecraftServer #Minecraft");
+
 	}
 
 	@Override
 	public void onEnable() {
-		// Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
-		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 
-		// BombSet
+		Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
+		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 		Bukkit.getPluginManager().registerEvents(new BombSet(), this);
 
 		// StoreSet
@@ -50,5 +50,6 @@ public class Main extends JavaPlugin {
 		new TwitMain("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
 				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\n#MinecraftServer #Minecraft");
+
 	}
 }
