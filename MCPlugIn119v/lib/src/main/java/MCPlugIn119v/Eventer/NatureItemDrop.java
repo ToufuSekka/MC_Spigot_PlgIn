@@ -15,24 +15,28 @@ public class NatureItemDrop implements Listener {
 	private Dice Dc;
 
 	public void Wither_Death(EntityDeathEvent EDE) {
-		Le = EDE.getEntity();
+		Le = null;
 		Dc = null;
+		RewardIS = null;
 
-		if (Le instanceof Wither) {
-			Dc = new Dice(12.5f);// Percentage;
-			RewardIS = new ItemStack(Material.CHORUS_FLOWER);
-			if (Dc.GetWin()) {
+		Le = EDE.getEntity();
+		RewardIS = new ItemStack(Material.CHORUS_FLOWER);
+		Dc = new Dice(12.5f);// Percentage;
+
+		if (Le instanceof Wither)
+			if (Dc.GetWin())
 				Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);
-			}
-		}
 	}
 
 	@EventHandler
 	public void AllEntityDeath(EntityDeathEvent EDE) {
-		Le = EDE.getEntity();
+		Le = null;
 		Dc = null;
+		RewardIS = null;
+		
+		Le = EDE.getEntity();
+		Dc = new Dice(1500, new int[] { 15 });
 		RewardIS = new ItemStack(Material.NETHER_WART);
-		Dc = new Dice(1500, new int[] {15});// Percentage;
 
 		if (Dc.GetWin())
 			Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);

@@ -31,15 +31,15 @@ public class PlayerDataSorter {
 		for (File f : FileList) {
 			String FileName = f.getName();
 			SQLMain UserSearcher = new SQLMain(FileName.replace(Excepter, ""));
-
+			
 			if (FileName.endsWith(Excepter)) {
-				System.out.print("read  Data :: " + FileName + ", ");
+				System.out.print("read :: " + FileName + ", ");
 			}
 
 			if (UserSearcher.UserCheck()) {
-				System.out.println("Exist User : -> " + FileName);
+				System.out.println("Exist -> " + FileName);
 			} else {
-				System.out.println("Deleted : -> " + FileName);
+				System.out.println("Deleted -> " + FileName);
 				f.delete();
 			}
 		}

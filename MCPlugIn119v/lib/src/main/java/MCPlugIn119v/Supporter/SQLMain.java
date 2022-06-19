@@ -40,54 +40,59 @@ public class SQLMain {
 	};
 
 	public boolean Rigist() {
+		boolean checker = false;
+
 		INIT();
 		try {
 			this.ppst = con.prepareStatement("INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
-			if (ErrorChker != 1)
-				return true;
+			if (ErrorChker == 1)
+				checker = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		CloseAll();
-		return false;
+		return checker;
 	}
 
 	public boolean Sign() {
+		boolean checker = false;
 		INIT();
 		try {
 			this.ppst = con.prepareStatement("UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
-			if (ErrorChker != 1)
-				return true;
+			if (ErrorChker == 2)
+				checker = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		CloseAll();
-		return false;
+		return checker;
 	}
 
 	public boolean UserCheck() {
+		boolean checker = false;
 		INIT();
 		try {
 			this.ppst = con.prepareStatement("SELECT 'UUID' FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
-			return Res.next();
+			checker = Res.next();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		CloseAll();
-		return false;
+		return checker;
 	}
 
 	public boolean GameLeave() {
+		boolean checker = false;
 
 		if (this.PlayTime < 0) {
 			throw new NullPointerException("Insert User PlayTime(Seconds)");
@@ -110,7 +115,7 @@ public class SQLMain {
 			e.printStackTrace();
 		}
 		CloseAll();
-		return false;
+		return checker;
 	}
 
 	public int GetLeftTime() {
