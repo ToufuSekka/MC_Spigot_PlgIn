@@ -21,26 +21,29 @@ public class PlayerDataSorter {
 		// File WinDataFiles = new
 		// File("E:/Minecraft/MineCraftSoloTestWorld/world/playerdata");
 
+		// Stat Data
 		FileChecker(LinuxStatFiles.listFiles(), ".json");
+
+		// FullData
 		FileChecker(LinuxDataFiles.listFiles(), ".dat_old");
 		FileChecker(LinuxDataFiles.listFiles(), ".dat");
 
 	}
 
 	private void FileChecker(File[] FileList, String Excepter) {
+
 		for (File f : FileList) {
 			String FileName = f.getName();
 			SQLMain UserSearcher = new SQLMain(FileName.replace(Excepter, ""));
-			
+
 			if (FileName.endsWith(Excepter)) {
 				System.out.print("read :: " + FileName + ", ");
-			}
-
-			if (UserSearcher.UserCheck()) {
-				System.out.println("Exist -> " + FileName);
-			} else {
-				System.out.println("Deleted -> " + FileName);
-				f.delete();
+				if (UserSearcher.UserCheck()) {
+					System.out.println("Exist -> " + FileName);
+				} else {
+					System.out.println("Deleted -> " + FileName);
+					f.delete();
+				}
 			}
 		}
 	}
