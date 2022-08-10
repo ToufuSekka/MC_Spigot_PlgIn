@@ -11,7 +11,7 @@ import java.sql.*;
 public class SQLMain {
 	// private static String SERVER_local =
 	// "jdbc:mysql://wint0719.ipdisk.co.kr:3306/mctotalsys";
-	private static String SERVER = "jdbc:mysql://mc-neptuneserver.servegame.com:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
+	private static String SERVER = "jdbc:mysql://mcneptune.net:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
 
 	// SQL
 	private Connection con;

@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
 		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.19"
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
 				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\nThis server is Genuine User Only!"
-				+ "\n#MinecraftServer #Minecraft");
+				+ "\nGameServer : mcneptune.net" + "\n#MinecraftServer #Minecraft");
 
 	}
 
