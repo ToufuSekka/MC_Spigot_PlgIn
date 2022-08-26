@@ -23,8 +23,8 @@ public class Bank extends SpecialItems {
 		ItemStack CheckPapers64 = LoredItem(Material.PAPER, 64, "ISBE Paper(For 64 Blocks)",
 				new String[] { "64 Blocks", "This guarantees in the Bank", "-International SnowmanBank-" });
 
-		ItemStack CheckBook = LoredItem(Material.BOOK, 1, "ISBE PaperSet(For 64 ISB Paper)",
-				new String[] { "64 ISB Papers", "This guarantees in the Bank", "-International SnowmanBank-" });
+		ItemStack CheckBook = LoredItem(Material.BOOK, 1, "ISBE PaperSet(For 64 ISBE Paper)",
+				new String[] { "64 ISBE Papers", "This guarantees in the Bank", "-International SnowmanBank-" });
 
 		this.Lists[0] = new MerchantRecipe(CheckPaper, 1024);
 		this.Lists[0].addIngredient(new ItemStack(Material.EMERALD_BLOCK, 64));
