@@ -14,6 +14,7 @@ public class NatureItemDrop implements Listener {
 
 	private Dice Dc;
 
+	@EventHandler
 	public void Wither_Death(EntityDeathEvent EDE) {
 		Le = null;
 		Dc = null;

@@ -21,7 +21,7 @@ public class Main extends JavaPlugin {
 
 		new PlayerDataSorter().Sorting();
 
-		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.19"
+		new TwitMain("Minecraft Server open." + "\nIf you have opinions, Please send DM." + "\nServerType : JE 1.19.1"
 				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
 				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\nThis server is Genuine User Only!"
 				+ "\nGameServer : mcneptune.net" + "\n#MinecraftServer #Minecraft");
@@ -33,6 +33,7 @@ public class Main extends JavaPlugin {
 
 		Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
 		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
+		Bukkit.getPluginManager().registerEvents(new NatureItemDrop(), this);
 		Bukkit.getPluginManager().registerEvents(new BombSet(), this);
 
 		// StoreSet
