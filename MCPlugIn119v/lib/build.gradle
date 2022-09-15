@@ -26,7 +26,7 @@ dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
     implementation("io.github.redouane59.twitter:twittered:2.16")
         
-    compileOnly 'org.spigotmc:spigot-api:1.19.1-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
 }
 
 tasks.named('test') {
@@ -37,7 +37,7 @@ bukkit {
 	main = 'MCPlugIn119v.Main'
 	name = 'MCPlugIn119v'
 	apiVersion = '1.13'
-    version = '1.3.1'
+    version = '1.3.2'
     description = '내가 만든거. 동풍설화 또는 토-후 셋카라고 읽어주자.'
     author = 'TouhuSekka'
     
