@@ -21,10 +21,14 @@ public class Main extends JavaPlugin {
 
 		new PlayerDataSorter().Sorting();
 
-		new TwitMain("Minecraft Server opened." + "\nIf you have opinions, Please send DM."
-				+ "\nServerVersion : JE, 1.19.2" + "\nServerGanre : Servival, Spigot-Vanilla"
-				+ "\nDiscord : https://discord.gg/vE7ETwXcG8" + "\nThis server is Genuine User Only!"
-				+ "\nServer IP: mcneptune.net" + "\n#MinecraftServer #Minecraft");
+		new TwitMain("Minecraft Server opened.\n"
+				+ "If you have opinions, Please send DM.\n"
+				+ "Version : JE, 1.19.2\n"
+				+ "Ganre : Servival, Spigot-Vanilla\n"
+				+ "Community(Korean Only) : https://cafe.naver.com/mcneptune\n"
+				+ "Discord : https://discord.gg/vE7ETwXcG8 \n"
+				+ "This server is Genuine User Only!\n"
+				+ "Server IP: mcneptune.net #Minecraft");
 	}
 
 	@Override
