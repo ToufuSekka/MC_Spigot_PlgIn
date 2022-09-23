@@ -54,7 +54,7 @@ public class SpecialItems {
 	 * @param LoreDatas
 	 * @return
 	 */
-	public ItemStack Lored_Fire(int Amounts, int Power, FireworkEffect FireEffect, String ItemName, String[] LoreDatas) {
+	public ItemStack Lored_Fire(int Amounts, int Power, FireworkEffect.Builder FireEffect, String ItemName, String[] LoreDatas) {
 		List<String> LoreData = new ArrayList<String>();
 		Item = new ItemStack(Material.FIREWORK_ROCKET, Amounts);
 		FireworkMeta FireMeta = (FireworkMeta) Item.getItemMeta();
@@ -62,7 +62,7 @@ public class SpecialItems {
 		FireMeta.setPower(Power);
 		
 		if(FireEffect != null) {
-			FireMeta.addEffect(FireEffect);
+			FireMeta.addEffect(FireEffect.build());
 		}
 		
 		// Add CustomName when it exists

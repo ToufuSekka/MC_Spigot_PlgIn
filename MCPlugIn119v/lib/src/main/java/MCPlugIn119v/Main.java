@@ -21,14 +21,11 @@ public class Main extends JavaPlugin {
 
 		new PlayerDataSorter().Sorting();
 
-		new TwitMain("Minecraft Server opened.\n"
-				+ "If you have opinions, Please send DM.\n"
-				+ "Version : JE, 1.19.2\n"
-				+ "Ganre : Servival, Spigot-Vanilla\n"
-				+ "Community(Korean Only) : https://cafe.naver.com/mcneptune\n"
-				+ "Discord : https://discord.gg/vE7ETwXcG8 \n"
-				+ "This server is Genuine User Only!\n"
+		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n" + "Version : JE, 1.19.2\n"
+				+ "Ganre : Servival, Spigot-Vanilla\n" + "Community(Korean Only) : https://cafe.naver.com/mcneptune\n"
+				+ "Discord : https://discord.gg/vE7ETwXcG8 \n" + "This server is Genuine User Only!\n"
 				+ "Server IP: mcneptune.net #Minecraft");
+
 	}
 
 	@Override
@@ -43,9 +40,9 @@ public class Main extends JavaPlugin {
 		this.getCommand("store").setExecutor(new CMDMain());
 
 		// Specialrecipe
-		new TNTBomb(BombType.TNTBomb, this);
-		// new TNTBomb(BombType.Radioactive, this);
-		// new TNTBomb(BombType.Nuclear, this);
+		new TNTBomb(BombType.Bomb, this);
+		new TNTBomb(BombType.Nuclear, this);
+		new TNTBomb(BombType.Howitzer, this);
 	}
 
 	@Override
