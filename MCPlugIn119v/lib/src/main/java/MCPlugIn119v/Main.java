@@ -12,7 +12,7 @@ import MCPlugIn119v.Supporter.*;
 
 /**
  * @since 2022-02-28
- * @author ToufuSekka ½Ç ½ÇÇàºÎ¹®.
+ * @author ToufuSekka ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î¹ï¿½.
  */
 public class Main extends JavaPlugin {
 
@@ -22,9 +22,7 @@ public class Main extends JavaPlugin {
 		new PlayerDataSorter().Sorting();
 
 		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n" + "Version : JE, 1.19.2\n"
-				+ "Ganre : Servival, Spigot-Vanilla\n" + "Community(Korean Only) : https://cafe.naver.com/mcneptune\n"
-				+ "Discord : https://discord.gg/vE7ETwXcG8 \n" + "This server is Genuine User Only!\n"
-				+ "Server IP: mcneptune.net #Minecraft");
+				+ "Information Web : http://mcneptune.net" + "#SpigotServer #Minecraft");
 
 	}
 
@@ -48,9 +46,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-		new TwitMain("Server is Closed. \nIf you have opinions, Please DM." + "\nSee you next time."
-				+ "\nCommunity(Korean Only) : https://cafe.naver.com/mcneptune"
-				+ "\nGlobal Discord : https://discord.gg/vE7ETwXcG8" + "\n#MinecraftServer #Minecraft");
+		new TwitMain("Server is Closed. " + "\nIf you have opinions, Please DM." + "\nSee you next time."
+				+ "\n#MinecraftServer #Minecraft");
 
 	}
 }

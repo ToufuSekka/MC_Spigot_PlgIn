@@ -37,8 +37,8 @@ bukkit {
 	main = 'MCPlugIn119v.Main'
 	name = 'MCPlugIn119v'
 	apiVersion = '1.13'
-    version = '1.4.0'
-    description = '내가 만든거. 동풍설화 또는 토-후 셋카라고 읽어주자.'
+    version = '1.4.1'
+    description ='....'
     author = 'TouhuSekka'
     
     commands {
