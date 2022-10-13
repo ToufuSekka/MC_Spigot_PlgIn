@@ -6,7 +6,7 @@ import MCPlugIn119v.Supporter.*;
 
 /**
  * @since 2022-02-28
- * @author ToufuSekka 일단, 데이터 정리기.
+ * @author ToufuSekka.
  */
 public class PlayerDataSorter {
 

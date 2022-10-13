@@ -12,7 +12,7 @@ import MCPlugIn119v.Supporter.*;
 
 /**
  * @since 2022-02-28
- * @author ToufuSekka �� ����ι�.
+ * @author ToufuSekka.
  */
 public class Main extends JavaPlugin {
 
@@ -21,8 +21,9 @@ public class Main extends JavaPlugin {
 
 		new PlayerDataSorter().Sorting();
 
-		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n" + "Version : JE, 1.19.2\n"
-				+ "Information Web : http://mcneptune.net" + "#SpigotServer #Minecraft");
+		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n"
+				+ "Information Web : http://mcneptune.net/TotalPHPWeb/MC_WebServer"
+				+ "#SpigotServer #Minecraft");
 
 	}
 
@@ -46,7 +47,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-		new TwitMain("Server is Closed. " + "\nIf you have opinions, Please DM." + "\nSee you next time."
+		new TwitMain("Server is Closed." + "\nIf you have opinions, Please DM." + "\nSee you next time."
 				+ "\n#MinecraftServer #Minecraft");
 
 	}
