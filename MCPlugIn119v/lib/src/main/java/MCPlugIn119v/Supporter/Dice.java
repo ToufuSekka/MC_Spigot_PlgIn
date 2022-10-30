@@ -21,7 +21,7 @@ public class Dice {
 		Ran = new Random();
 		float Value = Ran.nextFloat() * 100f;
 
-		if (percent <= Value)
+		if (Value <= percent)
 			WIN = true;
 		else
 			WIN = false;

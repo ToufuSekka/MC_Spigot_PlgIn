@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
 		new PlayerDataSorter().Sorting();
 
 		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n"
-				+ "Information Web : http://mcneptune.net/MC_WebServer"
+				+ "Information Web : http://mcneptune.net"
 				+ "#SpigotServer #Minecraft");
 
 	}
