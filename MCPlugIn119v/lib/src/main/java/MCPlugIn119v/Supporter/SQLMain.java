@@ -3,7 +3,7 @@ package MCPlugIn119v.Supporter;
 import java.sql.*;
 
 /**
- * µ¥ÀÌÅÍº£ÀÌ½º °ü·Ã º¸Á¶ ½Ã½ºÅÆ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã½ï¿½ï¿½ï¿½
  * 
  * @since 2022-2-27
  * @author TouhuSekka
@@ -11,7 +11,9 @@ import java.sql.*;
 public class SQLMain {
 	// private static String SERVER_local =
 	// "jdbc:mysql://wint0719.ipdisk.co.kr:3306/mctotalsys";
-	private static String SERVER = "jdbc:mysql://mcneptune.net:3306/mctotalsys?allowPublicKeyRetrieval=true&useSSL=false";
+	private String SERVER;
+	private String DBUser;
+	private String Password;
 
 	// SQL
 	private Connection con;
@@ -29,7 +31,26 @@ public class SQLMain {
 
 		this.UUID = UUID;
 	}
-
+	
+	public SQLMain(String Server,String UserID,String UserPW) {
+		this.SERVER = Server;
+		this.DBUser = UserID;
+		this.Password = UserPW;
+	}
+	
+	//Getter And Setter
+	public void SetServerAdress(String Adress) {
+		this.SERVER = Adress;
+	}
+	
+	public void SetUser(String DBUser) {
+		this.DBUser = DBUser;
+	}
+	
+	public void SetPassword(String Password) {
+		this.Password = Password;
+	}
+	
 	// UUID
 	public void SetUUID(String MC_UUID) {
 		this.UUID = MC_UUID;
@@ -98,7 +119,7 @@ public class SQLMain {
 			throw new NullPointerException("Insert User PlayTime(Seconds)");
 		}
 
-		// ½Ã°£À» Á¦°í-> ½Ã°£À» »©°í-> ÀúÀåÇÑ´Ù.
+		// ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-> ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-> ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		LeftTime = GetLeftTime();
 		int TotalTime = LeftTime - PlayTime;
 
@@ -145,7 +166,7 @@ public class SQLMain {
 			// This is just TESTSERVER VERSION!
 			// DO NOT use for public mc_Server
 			// con = DriverManager.getConnection(SERVER, "root", "vonrk08217!");
-			con = DriverManager.getConnection(SERVER, "mcplayer", "vonrk08217");
+			con = DriverManager.getConnection(SERVER, DBUser, Password);
 		} catch (SQLException SQLe) {
 			SQLe.printStackTrace();
 		}

@@ -24,9 +24,8 @@ public class NatureItemDrop implements Listener {
 		RewardIS = new ItemStack(Material.CHORUS_FLOWER);
 		Dc = new Dice(12.5f);// Percentage;
 
-		if (Le instanceof Wither)
-			if (Dc.GetWin())
-				Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);
+		if (Le instanceof Wither && Dc.GetWin())
+			Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);
 	}
 
 	@EventHandler

@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.*;
 import MCPlugIn119v.Supporter.*;
 
 /**
- * ÇÃ·¹ÀÌ¾î¿¡ °üÇÑ Æ¯¼ö ¼­¹ö»çÀÌµå, ÀÌº¥Æ®
+ * ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½, ï¿½Ìºï¿½Æ®
  * 
  * @author ToufuSekka
  */
@@ -37,7 +37,7 @@ public class PlayerBackEnd implements Listener {
 				sqlSetter.Sign();
 				P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
 			} else {
-				P.kickPlayer("Nothing Playing Time. You should ask to ADMINs");
+				P.kickPlayer("Nothing Playing Time. You should ask to ADMIN");
 				sqlSetter = null;
 				return;
 			}

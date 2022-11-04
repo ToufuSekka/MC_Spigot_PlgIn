@@ -8,15 +8,43 @@ import io.github.redouane59.twitter.signature.*;
  * @author TouhuSekka
  */
 public class TwitMain {
-	private final String AccessToken = "1483719714262388739-jTGfNQDkFZvMkJ09IUmNDYB1WUI0Di";
-	private final String AccessToken_Secret = "2tawWcD8OtzdTH547JYpaUzqCqYNYIENfGYrIZg70Svh3";
-	private final String ComsumeAPIKey = "whrrUAD92F19T0kpHM2PQnm6y";
-	private final String ComsumeAPI_Secret = "IGbZONaY7rvTthNUHQc02Y6JsF9VJwznc7NWdUctyzWCNrMQeo";
-	
-	public TwitMain(String TweetText) {
-		TwitterClient TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
-				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
+	private String AccessToken;
+	private String AccessToken_Secret;
+	private String ComsumeAPIKey;
+	private String ComsumeAPI_Secret;
 
-		Tweet twt = TwitClie.postTweet(TweetText);
+	private TwitterClient TwitClie;
+
+	public TwitMain(String TweetText) {
+		Build();
+		Tweet(TweetText);
+	}
+
+	public TwitMain(String Token, String Token_Secret, String Key, String Key_Secret) {
+		this.AccessToken = Token;
+		this.AccessToken_Secret = Token_Secret;
+		this.ComsumeAPIKey = Key;
+		this.ComsumeAPI_Secret = Key_Secret;
+	}
+
+	public void SetTokens(String Token, String Token_Secret) {
+		this.AccessToken = Token;
+		this.AccessToken_Secret = Token_Secret;
+	}
+
+	public void SetAPIKeys(String Key, String Key_Secret) {
+		this.ComsumeAPIKey = Key;
+		this.ComsumeAPI_Secret = Key_Secret;
+	}
+
+	public boolean Tweet(String Texts) {
+		Tweet twt = TwitClie.postTweet(Texts);
+		return false;
+	}
+
+	public boolean Build() {
+		TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
+				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
+		return false;
 	}
 }

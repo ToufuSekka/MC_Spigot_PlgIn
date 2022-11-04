@@ -16,7 +16,7 @@ public class Dice {
 	 */
 	public Dice(float percent) {
 		if ((percent < 0) || (percent > 100))
-			throw new IllegalArgumentException("Enter bigger then 0");
+			throw new IllegalArgumentException("Enter Between 0 to 100");
 
 		Ran = new Random();
 		float Value = Ran.nextFloat() * 100f;

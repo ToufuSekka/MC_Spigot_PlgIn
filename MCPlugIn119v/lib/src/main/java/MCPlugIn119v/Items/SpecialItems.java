@@ -82,7 +82,7 @@ public class SpecialItems {
 		return Item;
 	}
 	
-	public ItemStack CustEnchant(Material material, String ItemName, Map<Enchantment,Integer> Encnants) {
+	protected ItemStack CustEnchant(Material material, String ItemName, Map<Enchantment,Integer> Encnants) {
 		Item = new ItemStack(material);
 		Item.addEnchantments(Encnants);
 		
