@@ -15,11 +15,6 @@ public class TwitMain {
 
 	private TwitterClient TwitClie;
 
-	public TwitMain(String TweetText) {
-		Build();
-		Tweet(TweetText);
-	}
-
 	public TwitMain(String Token, String Token_Secret, String Key, String Key_Secret) {
 		this.AccessToken = Token;
 		this.AccessToken_Secret = Token_Secret;
@@ -27,6 +22,17 @@ public class TwitMain {
 		this.ComsumeAPI_Secret = Key_Secret;
 	}
 
+	public boolean Build() {
+		TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
+				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
+		return false;
+	}
+	
+	public boolean Tweet(String Texts) {
+		Tweet twt = TwitClie.postTweet(Texts);
+		return false;
+	}
+	
 	public void SetTokens(String Token, String Token_Secret) {
 		this.AccessToken = Token;
 		this.AccessToken_Secret = Token_Secret;
@@ -35,16 +41,5 @@ public class TwitMain {
 	public void SetAPIKeys(String Key, String Key_Secret) {
 		this.ComsumeAPIKey = Key;
 		this.ComsumeAPI_Secret = Key_Secret;
-	}
-
-	public boolean Tweet(String Texts) {
-		Tweet twt = TwitClie.postTweet(Texts);
-		return false;
-	}
-
-	public boolean Build() {
-		TwitClie = new TwitterClient(TwitterCredentials.builder().accessToken(AccessToken)
-				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
-		return false;
 	}
 }

@@ -16,14 +16,25 @@ import MCPlugIn119v.Supporter.*;
  */
 public class Main extends JavaPlugin {
 
+	private TwitMain Twitter;
+	private CustDataConfig CustConfig;
+
 	@Override
 	public void onLoad() {
+		CustConfig = new CustDataConfig("");
 
 		new PlayerDataSorter().Sorting();
 
-		new TwitMain("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n"
-				+ "Information Web : http://mcneptune.net\n" + "#SpigotServer #Minecraft");
+		Twitter = new TwitMain(CustConfig.getToken(),
+				CustConfig.getToken_Secret(), CustConfig.getAPIKey(),
+				CustConfig.getAPI_Secret());
 
+		Twitter.Build();
+		
+		Twitter.Tweet("Minecraft Server opened.\n"
+				+ "If you have opinions, Please send DM.\n"
+				+ "Information Web : http://mcneptune.net\n"
+				+ "#SpigotServer #Minecraft");
 	}
 
 	@Override
@@ -46,8 +57,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-		new TwitMain("Server is Closed." + "\nIf you have opinions, Please DM." + "\nSee you next time."
-				+ "\n#MinecraftServer #Minecraft");
+		Twitter.Tweet("Server is Closed." + "\nIf you have opinions, Please DM."
+				+ "\nSee you next time." + "\n#MinecraftServer #Minecraft");
 
 	}
 }

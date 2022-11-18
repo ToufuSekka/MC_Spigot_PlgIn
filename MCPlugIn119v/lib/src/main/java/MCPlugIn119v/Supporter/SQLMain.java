@@ -3,7 +3,6 @@ package MCPlugIn119v.Supporter;
 import java.sql.*;
 
 /**
- * �����ͺ��̽� ���� ���� �ý���
  * 
  * @since 2022-2-27
  * @author TouhuSekka
@@ -25,32 +24,25 @@ public class SQLMain {
 
 	private int PlayTime, LeftTime;
 
-	public SQLMain(String UUID) {
-		if (UUID.isEmpty())
-			throw new IllegalArgumentException("UUID is Empty!");
-
-		this.UUID = UUID;
-	}
-	
-	public SQLMain(String Server,String UserID,String UserPW) {
+	public SQLMain(String Server, String UserID, String UserPW) {
 		this.SERVER = Server;
 		this.DBUser = UserID;
 		this.Password = UserPW;
 	}
-	
-	//Getter And Setter
+
+	// Getter And Setter
 	public void SetServerAdress(String Adress) {
 		this.SERVER = Adress;
 	}
-	
+
 	public void SetUser(String DBUser) {
 		this.DBUser = DBUser;
 	}
-	
+
 	public void SetPassword(String Password) {
 		this.Password = Password;
 	}
-	
+
 	// UUID
 	public void SetUUID(String MC_UUID) {
 		this.UUID = MC_UUID;
@@ -65,7 +57,8 @@ public class SQLMain {
 
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
+			this.ppst = con.prepareStatement(
+					"INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -83,7 +76,8 @@ public class SQLMain {
 		boolean checker = false;
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
+			this.ppst = con.prepareStatement(
+					"UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -101,7 +95,8 @@ public class SQLMain {
 		boolean checker = false;
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("SELECT 'UUID' FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement(
+					"SELECT 'UUID' FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 			checker = Res.next();
@@ -115,18 +110,16 @@ public class SQLMain {
 	public boolean GameLeave() {
 		boolean checker = false;
 
-		if (this.PlayTime < 0) {
+		if (this.PlayTime < 0)
 			throw new NullPointerException("Insert User PlayTime(Seconds)");
-		}
 
-		// �ð��� ����-> �ð��� ����-> �����Ѵ�.
 		LeftTime = GetLeftTime();
 		int TotalTime = LeftTime - PlayTime;
 
 		INIT();
 		try {
-			this.ppst = con
-					.prepareStatement("UPDATE userdata SET LogOutTime=CURRENT_TIMESTAMP, Lifetime=? WHERE UUID=?;");
+			this.ppst = con.prepareStatement(
+					"UPDATE userdata SET LogOutTime=CURRENT_TIMESTAMP, Lifetime=? WHERE UUID=?;");
 			this.ppst.setInt(1, TotalTime);
 			this.ppst.setString(2, this.UUID);
 			this.ppst.executeUpdate();
@@ -145,7 +138,8 @@ public class SQLMain {
 		INIT();
 		try {
 			// Search
-			this.ppst = con.prepareStatement("SELECT Lifetime FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement(
+					"SELECT Lifetime FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 
