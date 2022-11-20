@@ -27,19 +27,9 @@ public class TwitMain {
 				.accessTokenSecret(AccessToken_Secret).apiKey(ComsumeAPIKey).apiSecretKey(ComsumeAPI_Secret).build());
 		return false;
 	}
-	
+
 	public boolean Tweet(String Texts) {
 		Tweet twt = TwitClie.postTweet(Texts);
 		return false;
-	}
-	
-	public void SetTokens(String Token, String Token_Secret) {
-		this.AccessToken = Token;
-		this.AccessToken_Secret = Token_Secret;
-	}
-
-	public void SetAPIKeys(String Key, String Key_Secret) {
-		this.ComsumeAPIKey = Key;
-		this.ComsumeAPI_Secret = Key_Secret;
 	}
 }

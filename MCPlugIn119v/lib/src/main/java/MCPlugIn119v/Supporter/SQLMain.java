@@ -157,9 +157,6 @@ public class SQLMain {
 	// Base
 	private void INIT() {
 		try {
-			// This is just TESTSERVER VERSION!
-			// DO NOT use for public mc_Server
-			// con = DriverManager.getConnection(SERVER, "root", "vonrk08217!");
 			con = DriverManager.getConnection(SERVER, DBUser, Password);
 		} catch (SQLException SQLe) {
 			SQLe.printStackTrace();

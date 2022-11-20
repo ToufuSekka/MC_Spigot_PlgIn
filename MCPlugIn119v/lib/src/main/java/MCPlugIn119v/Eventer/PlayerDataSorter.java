@@ -10,38 +10,42 @@ import MCPlugIn119v.Supporter.*;
  */
 public class PlayerDataSorter {
 
+	private SQLMain sqlmain;
+	private File StatFiles, DataFiles;
+
+	public PlayerDataSorter(String ServerDirectory, SQLMain SQLData) {
+		sqlmain = SQLData;
+		StatFiles = new File(ServerDirectory + "/world/stats");
+		DataFiles = new File(ServerDirectory + "/world/playerdata");
+	}
+
+	public PlayerDataSorter(String ServerDirectory, String SQLAdre, String UserName, String SQLPW) {
+		sqlmain = new SQLMain(SQLAdre, UserName, SQLPW);
+		StatFiles = new File(ServerDirectory + "/world/stats");
+		DataFiles = new File(ServerDirectory + "/world/playerdata");
+	}
+
 	public void Sorting() {
-		// That is Linux Ubuntu
-		File LinuxStatFiles = new File("/minecraftserver/world/stats");
-		File LinuxDataFiles = new File("/minecraftserver/world/playerdata");
-
-		// That is Windows
-		// File WinStatFiles = new
-		// File("E:/Minecraft/MineCraftSoloTestWorld/world/stats");
-		// File WinDataFiles = new
-		// File("E:/Minecraft/MineCraftSoloTestWorld/world/playerdata");
-
-		// Stat Data
-		FileChecker(LinuxStatFiles.listFiles(), ".json");
-
-		// FullData
-		FileChecker(LinuxDataFiles.listFiles(), ".dat_old");
-		FileChecker(LinuxDataFiles.listFiles(), ".dat");
-
+		FileChecker(StatFiles.listFiles(), ".json");
+		FileChecker(DataFiles.listFiles(), ".dat_old");
+		FileChecker(DataFiles.listFiles(), ".dat");
 	}
 
 	private void FileChecker(File[] FileList, String Excepter) {
 
+		if (FileList.equals(null) || FileList.length == 0)
+			return;
+
 		for (File f : FileList) {
 			String FileName = f.getName();
-			SQLMain UserSearcher = new SQLMain(FileName.replace(Excepter, ""));
+			sqlmain.SetUUID(FileName.replace(Excepter, ""));
 
 			if (FileName.endsWith(Excepter)) {
 				System.out.print("read :: " + FileName + ", ");
-				if (UserSearcher.UserCheck()) {
-					System.out.println("Exist -> " + FileName);
+				if (sqlmain.UserCheck()) {
+					System.out.println("Exist->" + FileName);
 				} else {
-					System.out.println("Deleted -> " + FileName);
+					System.out.println("Deleted->" + FileName);
 					f.delete();
 				}
 			}

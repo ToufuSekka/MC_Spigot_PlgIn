@@ -14,7 +14,6 @@ import org.bukkit.inventory.meta.*;
 import MCPlugIn119v.Supporter.*;
 
 /**
- * 
  * @author ToufuSekka
  */
 public class PlayerBackEnd implements Listener {
@@ -31,11 +30,8 @@ public class PlayerBackEnd implements Listener {
 		P = PJe.getPlayer();
 		String str = P.getUniqueId().toString();
 
-		CustConfig = new CustDataConfig(null);
-		
-		sqlSetter = new SQLMain(CustConfig.getSQLAdre(),
-				CustConfig.getUserName(), CustConfig.getSQLPW());
-
+		CustConfig = new CustDataConfig("MC_Config.txt");
+		sqlSetter = new SQLMain(CustConfig.getSQLAdre(), CustConfig.getUserName(), CustConfig.getSQLPW());
 		sqlSetter.SetUUID(str);
 
 		if (sqlSetter.UserCheck()) {
@@ -50,7 +46,7 @@ public class PlayerBackEnd implements Listener {
 		} else {
 			sqlSetter.Rigist();
 		}
-		
+
 		CustConfig = null;
 		sqlSetter = null;
 	}
@@ -61,16 +57,13 @@ public class PlayerBackEnd implements Listener {
 		String str = P.getUniqueId().toString();
 		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
 
-		
-		CustConfig = new CustDataConfig(null);
-		
-		sqlSetter = new SQLMain(CustConfig.getSQLAdre(),
-				CustConfig.getUserName(), CustConfig.getSQLPW());
-
+		CustConfig = new CustDataConfig("MC_Config.txt");
+		sqlSetter = new SQLMain(CustConfig.getSQLAdre(), CustConfig.getUserName(), CustConfig.getSQLPW());
 		sqlSetter.SetUUID(str);
 		sqlSetter.SetPlayTime(Time);
 		sqlSetter.GameLeave();
 		sqlSetter = null;
+		CustConfig = null;
 	}
 
 	@EventHandler
@@ -107,10 +100,8 @@ public class PlayerBackEnd implements Listener {
 			D = Date.from(LDT.atZone(ZoneId.systemDefault()).toInstant());
 		}
 
-		String BanText = "You're dead.\nYou are unable to join our Server for "
-				+ RevelveTime + " Miniutes.";
-		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D,
-				PDe.getDeathMessage());
+		String BanText = "You're dead.\nYou are unable to join our Server for " + RevelveTime + " Miniutes.";
+		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, PDe.getDeathMessage());
 		P.kickPlayer(BanText);
 		D = null;
 	}

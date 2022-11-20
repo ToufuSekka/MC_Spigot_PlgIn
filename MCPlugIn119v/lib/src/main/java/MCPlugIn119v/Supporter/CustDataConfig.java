@@ -2,18 +2,22 @@ package MCPlugIn119v.Supporter;
 
 import java.io.*;
 
+/**
+ * &since 2022-11-19 &author TouhuSekka
+ **/
 public class CustDataConfig {
 
 	private FileReader ConfFile;
 	private BufferedReader BffRead;
-	private String Line, BigSort;
+	private String Line;
 
 	private String SQLAdre, UserName, SQLPW;
 	private String Token, Token_Secret, APIKey, API_Secret;
-	
+	private String UserDataPath;
+
 	public CustDataConfig(String FilePath) {
 		try {
-			ConfFile = new FileReader(FilePath + "CstCnfFile.txt");
+			ConfFile = new FileReader(FilePath);
 			BffRead = new BufferedReader(ConfFile);
 
 			do {
@@ -27,43 +31,46 @@ public class CustDataConfig {
 	}
 
 	private void Parsing(String ReadData) {
+		String[] Divider;
 
-		if (ReadData.startsWith("$SQLServer")) {
-			BigSort = "SQLServer";
-		} else if (ReadData.startsWith("ServerAdress")
-				&& BigSort.equals("SQLServer")) {
-			SQLAdre = ReadData.split("=")[1];
+		if (ReadData.startsWith("&")) {
+			Divider = ReadData.split("=");
+			switch (Divider[0]) {
+			case "&ServerAdress":
+				SQLAdre = Divider[1];
+				break;
+			case "&UserName":
+				UserName = Divider[1];
+				break;
+			case "&Password":
+				SQLPW = Divider[1];
+				break;
+			case "&AccessToken":
+				Token = Divider[1];
+				break;
+			case "&AccessToken_Secret":
+				Token_Secret = Divider[1];
+				break;
+			case "&ComsumeAPIKey":
+				APIKey = Divider[1];
+				break;
+			case "&ComsumeAPI_Secret":
+				API_Secret = Divider[1];
+				break;
+			case "&PlayerDataFile":
+				UserDataPath = Divider[1];
+				break;
+			default:
+				return;
+			}
+		}
 
-		} else if (ReadData.startsWith("UserName")
-				&& BigSort.equals("SQLServer")) {
-			UserName = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("Password")
-				&& BigSort.equals("SQLServer")) {
-			SQLPW = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("$Twitter")) {
-			BigSort = "Twitter";
-		} else if (ReadData.startsWith("AccessToken")
-				&& BigSort.equals("Twitter")) {
-			SQLAdre = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("AccessToken_Secret")
-				&& BigSort.equals("Twitter")) {
-			Token_Secret = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("ComsumeAPIKey")
-				&& BigSort.equals("Twitter")) {
-			APIKey = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("ComsumeAPI_Secret")
-				&& BigSort.equals("Twitter")) {
-			API_Secret = ReadData.split("=")[1];
-		} else if (ReadData.startsWith("$PlayerDataFile")) {
-
-		} else
-			return;
 	}
-	
+
 	public String getSQLAdre() {
 		return SQLAdre;
 	}
-	
+
 	public String getUserName() {
 		return UserName;
 	}
@@ -71,7 +78,6 @@ public class CustDataConfig {
 	public String getSQLPW() {
 		return SQLPW;
 	}
-
 
 	public String getToken() {
 		return Token;
@@ -81,13 +87,16 @@ public class CustDataConfig {
 		return Token_Secret;
 	}
 
-
 	public String getAPIKey() {
 		return APIKey;
 	}
 
 	public String getAPI_Secret() {
 		return API_Secret;
+	}
+
+	public String getUserDataPath() {
+		return UserDataPath;
 	}
 
 }
