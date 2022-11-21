@@ -58,4 +58,5 @@ public class Main extends JavaPlugin {
 		Twitter.Tweet("Server is Closed." + "\nIf you have opinions, Please DM." + "\nSee you next time."
 				+ "\n#MinecraftServer #Minecraft");
 	}
+	
 }

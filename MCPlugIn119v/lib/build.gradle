@@ -37,7 +37,7 @@ bukkit {
 	main = 'MCPlugIn119v.Main'
 	name = 'MCPlugIn119v'
 	apiVersion = '1.13'
-    version = '2.00.016'
+    version = '2.00.017'
     description ='None'
     author = 'TouhuSekka'
     

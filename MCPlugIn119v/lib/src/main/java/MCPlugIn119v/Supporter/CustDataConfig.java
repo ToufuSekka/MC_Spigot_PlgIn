@@ -34,7 +34,7 @@ public class CustDataConfig {
 		String[] Divider;
 
 		if (ReadData.startsWith("&")) {
-			Divider = ReadData.split("=");
+			Divider = ReadData.split("=",2);
 			switch (Divider[0]) {
 			case "&ServerAdress":
 				SQLAdre = Divider[1];
