@@ -45,7 +45,7 @@ public class PlayerDataSorter {
 				if (sqlmain.UserCheck()) {
 					System.out.println("Exist->" + FileName);
 				} else {
-					System.out.println("Deleted->" + FileName);
+					System.out.println("Deleted=>" + FileName);
 					f.delete();
 				}
 			}

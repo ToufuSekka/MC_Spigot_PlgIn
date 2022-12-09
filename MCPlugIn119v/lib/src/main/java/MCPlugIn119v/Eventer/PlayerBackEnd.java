@@ -30,20 +30,20 @@ public class PlayerBackEnd implements Listener {
 		P = PJe.getPlayer();
 		String str = P.getUniqueId().toString();
 
-		CustConfig = new CustDataConfig("MC_Config.txt");
-		sqlSetter = new SQLMain(CustConfig.getSQLAdre(), CustConfig.getUserName(), CustConfig.getSQLPW());
-		sqlSetter.SetUUID(str);
+		SQLPre(str);
 
 		if (sqlSetter.UserCheck()) {
 			if (sqlSetter.GetLeftTime() > 0) {
 				sqlSetter.Sign();
 				P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
+				PJe.setJoinMessage("");
 			} else {
 				P.kickPlayer("Nothing Playing Time. You should ask to ADMIN");
 				sqlSetter = null;
 				return;
 			}
 		} else {
+			PJe.setJoinMessage("");
 			sqlSetter.Rigist();
 		}
 
@@ -57,11 +57,11 @@ public class PlayerBackEnd implements Listener {
 		String str = P.getUniqueId().toString();
 		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
 
-		CustConfig = new CustDataConfig("MC_Config.txt");
-		sqlSetter = new SQLMain(CustConfig.getSQLAdre(), CustConfig.getUserName(), CustConfig.getSQLPW());
-		sqlSetter.SetUUID(str);
+		SQLPre(str);
+
 		sqlSetter.SetPlayTime(Time);
 		sqlSetter.GameLeave();
+		PQe.setQuitMessage("");
 		sqlSetter = null;
 		CustConfig = null;
 	}
@@ -104,5 +104,11 @@ public class PlayerBackEnd implements Listener {
 		Bukkit.getBanList(Type.NAME).addBan(P.getName(), BanText, D, PDe.getDeathMessage());
 		P.kickPlayer(BanText);
 		D = null;
+	}
+
+	private void SQLPre(String UUID) {
+		CustConfig = new CustDataConfig("MC_Config.txt");
+		sqlSetter = new SQLMain(CustConfig.getSQLAdre(), CustConfig.getUserName(), CustConfig.getSQLPW());
+		sqlSetter.SetUUID(UUID);
 	}
 }
