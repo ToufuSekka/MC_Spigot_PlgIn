@@ -35,8 +35,8 @@ public class NatureItemDrop implements Listener {
 		RewardIS = null;
 		
 		Le = EDE.getEntity();
-		Dc = new Dice(1500, new int[] { 15 });
 		RewardIS = new ItemStack(Material.NETHER_WART);
+		Dc = new Dice(1500, new int[] { 15 });
 
 		if (Dc.GetWin())
 			Le.getWorld().dropItemNaturally(Le.getLocation(), RewardIS);

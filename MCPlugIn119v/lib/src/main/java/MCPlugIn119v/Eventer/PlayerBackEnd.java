@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.*;
 
 import MCPlugIn119v.Supporter.*;
 
-/**
+/**@since 2022-12-28
  * @author ToufuSekka
  */
 public class PlayerBackEnd implements Listener {
@@ -64,17 +64,6 @@ public class PlayerBackEnd implements Listener {
 		PQe.setQuitMessage("");
 		sqlSetter = null;
 		CustConfig = null;
-	}
-
-	@EventHandler
-	public void PlayerDeath(PlayerDeathEvent PDe) {
-		P = PDe.getEntity().getPlayer();
-		ItemStack Head = new ItemStack(Material.PLAYER_HEAD);
-		SkullMeta MetaHead = (SkullMeta) Head.getItemMeta();
-
-		MetaHead.setOwningPlayer(P);
-		Head.setItemMeta(MetaHead);
-		P.getWorld().dropItemNaturally(P.getLocation(), Head);
 	}
 
 	@Deprecated

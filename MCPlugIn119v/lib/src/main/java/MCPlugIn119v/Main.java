@@ -32,14 +32,14 @@ public class Main extends JavaPlugin {
 		Sorter.Sorting();
 		Twitter.Build();
 
-		Twitter.Tweet("Minecraft Server opened.\n" + "If you have opinions, Please send DM.\n"
-				+ "Information Web : http://mcneptune.net\n" + "#SpigotServer #Minecraft");
+		Twitter.Tweet(CustConfig.getOpenMessage());
 	}
 
 	@Override
 	public void onEnable() {
 
 		Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerFrontEnd(), this);
 		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 		Bukkit.getPluginManager().registerEvents(new NatureItemDrop(), this);
 		Bukkit.getPluginManager().registerEvents(new BombSet(), this);
@@ -55,8 +55,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		Twitter.Tweet("Server is Closed." + "\nIf you have opinions, Please DM." + "\nSee you next time."
-				+ "\n#MinecraftServer #Minecraft");
+		Twitter.Tweet(CustConfig.getCloseMessage());
 	}
-	
+
 }

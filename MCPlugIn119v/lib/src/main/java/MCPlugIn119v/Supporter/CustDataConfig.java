@@ -14,7 +14,8 @@ public class CustDataConfig {
 	private String SQLAdre, UserName, SQLPW;
 	private String Token, Token_Secret, APIKey, API_Secret;
 	private String UserDataPath;
-
+	private String OpenMessage,CloseMessage;
+	
 	public CustDataConfig(String FilePath) {
 		try {
 			ConfFile = new FileReader(FilePath);
@@ -60,6 +61,12 @@ public class CustDataConfig {
 			case "&PlayerDataFile":
 				UserDataPath = Divider[1];
 				break;
+			case "&ServerOpenTwitter":
+				OpenMessage = Divider[1];
+				break;
+			case "&ServerCloseTwitter":
+				CloseMessage = Divider[1];
+				break;
 			default:
 				return;
 			}
@@ -99,4 +106,11 @@ public class CustDataConfig {
 		return UserDataPath;
 	}
 
+	public String getOpenMessage() {
+		return OpenMessage;
+	}
+	
+	public String getCloseMessage() {
+		return CloseMessage;
+	}
 }
