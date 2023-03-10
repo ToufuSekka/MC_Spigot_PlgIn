@@ -86,7 +86,7 @@ public class TNTBomb {
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 
 		res.addIngredient(Material.FIREWORK_ROCKET);
-
+		
 		for (int y = 0; y < FirePower; y++)
 			res.addIngredient(Material.TNT);
 

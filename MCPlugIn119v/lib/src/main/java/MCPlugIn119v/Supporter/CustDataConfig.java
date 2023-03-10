@@ -2,6 +2,8 @@ package MCPlugIn119v.Supporter;
 
 import java.io.*;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 /**
  * &since 2022-11-19 &author TouhuSekka
  **/
@@ -61,10 +63,10 @@ public class CustDataConfig {
 			case "&PlayerDataFile":
 				UserDataPath = Divider[1];
 				break;
-			case "&ServerOpenTwitter":
+			case "&ServerOpenMSG":
 				OpenMessage = Divider[1];
 				break;
-			case "&ServerCloseTwitter":
+			case "&ServerCloseMSG":
 				CloseMessage = Divider[1];
 				break;
 			default:
@@ -74,6 +76,20 @@ public class CustDataConfig {
 
 	}
 
+	private String enterer(String str) {
+		String result ="";
+		String[] Divs = str.split("</br>");
+		
+		StringBuilder SB = new StringBuilder();
+		for(String forstr: Divs) {
+			SB.append(forstr);
+			SB.append(System.lineSeparator());
+		}
+		
+		result = SB.toString();
+		return result;
+	}
+	
 	public String getSQLAdre() {
 		return SQLAdre;
 	}
@@ -105,12 +121,13 @@ public class CustDataConfig {
 	public String getUserDataPath() {
 		return UserDataPath;
 	}
-
+	
+	//이 두놈은 개행버그 있음. 고쳐야함 ㅅㅂ;;
 	public String getOpenMessage() {
-		return OpenMessage;
+		return enterer(OpenMessage);
 	}
 	
 	public String getCloseMessage() {
-		return CloseMessage;
+		return enterer(CloseMessage);
 	}
 }
