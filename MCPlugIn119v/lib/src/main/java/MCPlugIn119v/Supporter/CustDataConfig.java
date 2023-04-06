@@ -2,8 +2,6 @@ package MCPlugIn119v.Supporter;
 
 import java.io.*;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 /**
  * &since 2022-11-19 &author TouhuSekka
  **/
@@ -16,8 +14,8 @@ public class CustDataConfig {
 	private String SQLAdre, UserName, SQLPW;
 	private String Token, Token_Secret, APIKey, API_Secret;
 	private String UserDataPath;
-	private String OpenMessage,CloseMessage;
-	
+	private String OpenMessage, CloseMessage;
+
 	public CustDataConfig(String FilePath) {
 		try {
 			ConfFile = new FileReader(FilePath);
@@ -26,8 +24,8 @@ public class CustDataConfig {
 			do {
 				Line = BffRead.readLine();
 				Parsing(Line);
-
 			} while (!Line.equals(null));
+			System.out.print("End of Initialization : Server Data Config");
 		} catch (Exception e) {
 			//
 		}
@@ -37,7 +35,7 @@ public class CustDataConfig {
 		String[] Divider;
 
 		if (ReadData.startsWith("&")) {
-			Divider = ReadData.split("=",2);
+			Divider = ReadData.split("=", 2);
 			switch (Divider[0]) {
 			case "&ServerAdress":
 				SQLAdre = Divider[1];
@@ -73,23 +71,22 @@ public class CustDataConfig {
 				return;
 			}
 		}
-
 	}
 
 	private String enterer(String str) {
-		String result ="";
+		String result = "";
 		String[] Divs = str.split("</br>");
-		
+
 		StringBuilder SB = new StringBuilder();
-		for(String forstr: Divs) {
+		for (String forstr : Divs) {
 			SB.append(forstr);
 			SB.append(System.lineSeparator());
 		}
-		
+
 		result = SB.toString();
 		return result;
 	}
-	
+
 	public String getSQLAdre() {
 		return SQLAdre;
 	}
@@ -121,12 +118,12 @@ public class CustDataConfig {
 	public String getUserDataPath() {
 		return UserDataPath;
 	}
-	
-	//이 두놈은 개행버그 있음. 고쳐야함 ㅅㅂ;;
+
+	// 이 두놈은 개행버그 있음. 고쳐야함 ㅅㅂ;;
 	public String getOpenMessage() {
 		return enterer(OpenMessage);
 	}
-	
+
 	public String getCloseMessage() {
 		return enterer(CloseMessage);
 	}

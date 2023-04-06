@@ -24,7 +24,7 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:30.1.1-jre'
-    implementation("io.github.redouane59.twitter:twittered:2.16")
+    implementation("io.github.redouane59.twitter:twittered:2.22")
         
     compileOnly 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
 }
@@ -37,7 +37,7 @@ bukkit {
 	main = 'MCPlugIn119v.Main'
 	name = 'MCPlugIn119v'
 	apiVersion = '1.13'
-    version = '2.02.003'
+    version = '2.02.026'
     description ='None'
     author = 'TouhuSekka'
     

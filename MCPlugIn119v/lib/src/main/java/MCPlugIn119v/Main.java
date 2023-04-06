@@ -3,11 +3,19 @@ package MCPlugIn119v;
 import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
+//
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
+import MCPlugIn119v.Eventer.RecipeSpecial.*;
+
+//
 import MCPlugIn119v.Commander.*;
+
+//
 import MCPlugIn119v.Recipe.EnumSet.*;
 import MCPlugIn119v.Recipe.ShapeLess.*;
+
+//
 import MCPlugIn119v.Supporter.*;
 
 /**
@@ -26,13 +34,13 @@ public class Main extends JavaPlugin {
 
 		Sorter = new PlayerDataSorter(CustConfig.getUserDataPath(), CustConfig.getSQLAdre(), CustConfig.getUserName(),
 				CustConfig.getSQLPW());
-
+		
 		Twitter = new TwitMain(CustConfig.getToken(), CustConfig.getToken_Secret(), CustConfig.getAPIKey(),
 				CustConfig.getAPI_Secret());
 		Sorter.Sorting();
 		Twitter.Build();
-
 		Twitter.Tweet(CustConfig.getOpenMessage());
+
 	}
 
 	@Override
@@ -43,7 +51,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 		Bukkit.getPluginManager().registerEvents(new NatureItemDrop(), this);
 		Bukkit.getPluginManager().registerEvents(new BombSet(), this);
-
+		
 		// StoreSet
 		this.getCommand("store").setExecutor(new CMDMain());
 

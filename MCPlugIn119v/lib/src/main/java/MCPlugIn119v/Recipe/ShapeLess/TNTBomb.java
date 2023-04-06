@@ -1,7 +1,10 @@
 package MCPlugIn119v.Recipe.ShapeLess;
 
+import java.util.*;
+
 import org.bukkit.*;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.meta.*;
 import org.bukkit.plugin.java.*;
 import org.bukkit.FireworkEffect.*;
 
@@ -31,6 +34,7 @@ public class TNTBomb {
 			x = 1;
 			while (x < 9) {
 				Bukkit.addRecipe(CannonGun(plugIn, x));
+				Bukkit.addRecipe(PoweredCannonGun(plugIn, x));
 				x++;
 			}
 			break;
@@ -86,9 +90,27 @@ public class TNTBomb {
 		ShapelessRecipe res = new ShapelessRecipe(Key, results);
 
 		res.addIngredient(Material.FIREWORK_ROCKET);
-		
 		for (int y = 0; y < FirePower; y++)
 			res.addIngredient(Material.TNT);
+
+		return res;
+	}
+	
+	private ShapelessRecipe PoweredCannonGun(JavaPlugin plugIn, float FirePower) {
+		String[] ForLore = new String[2];
+		float PowerCult = FirePower * 4;
+
+		ForLore[0] = "Howitzer";
+		ForLore[1] = Float.toString(PowerCult);
+
+		NamespacedKey Key = new NamespacedKey(plugIn, "Howitzer_" + (FirePower+8));
+		ItemStack results = new SpecialItems().Lored_Fire(2, 6,
+				FireworkEffect.builder().withColor(Color.BLACK).with(Type.BALL), "Howitzer", ForLore);
+		ShapelessRecipe res = new ShapelessRecipe(Key, results);
+
+		res.addIngredient(Material.FIREWORK_ROCKET);
+		for (int y = 0; y < FirePower; y++)
+			res.addIngredient(Material.DRAGON_BREATH);
 
 		return res;
 	}
