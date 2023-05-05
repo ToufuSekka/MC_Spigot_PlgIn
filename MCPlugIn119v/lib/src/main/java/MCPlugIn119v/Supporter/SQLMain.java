@@ -3,7 +3,6 @@ package MCPlugIn119v.Supporter;
 import java.sql.*;
 
 /**
- * 
  * @since 2022-2-27
  * @author TouhuSekka
  */

@@ -7,7 +7,6 @@ import org.bukkit.event.entity.*;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.*;
 
-
 /**
  * @since 2022-12-28
  * @author TouhuSekka

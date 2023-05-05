@@ -66,6 +66,10 @@ public class PlayerBackEnd implements Listener {
 		CustConfig = null;
 	}
 
+	public void PlayerPingkick() {
+		
+	}
+	
 	@Deprecated
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		P = PDe.getEntity().getPlayer();
