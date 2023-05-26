@@ -46,7 +46,6 @@ public class PlayerBackEnd implements Listener {
 			PJe.setJoinMessage("");
 			sqlSetter.Rigist();
 		}
-
 		CustConfig = null;
 		sqlSetter = null;
 	}
