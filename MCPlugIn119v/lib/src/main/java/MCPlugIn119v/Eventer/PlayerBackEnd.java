@@ -13,7 +13,8 @@ import org.bukkit.inventory.meta.*;
 
 import MCPlugIn119v.Supporter.*;
 
-/**@since 2022-12-28
+/**
+ * @since 2022-12-28
  * @author ToufuSekka
  */
 public class PlayerBackEnd implements Listener {
@@ -25,7 +26,7 @@ public class PlayerBackEnd implements Listener {
 	private SQLMain sqlSetter;
 	private CustDataConfig CustConfig;
 
-	@EventHandler
+	@Deprecated
 	public void ServerJoin(PlayerJoinEvent PJe) {
 		P = PJe.getPlayer();
 		String str = P.getUniqueId().toString();
@@ -43,11 +44,35 @@ public class PlayerBackEnd implements Listener {
 				return;
 			}
 		} else {
+			P.setWhitelisted(true);
 			PJe.setJoinMessage("");
-			sqlSetter.Rigist();
+
 		}
 		CustConfig = null;
 		sqlSetter = null;
+	}
+
+	@EventHandler
+	public void ServerJoin2(PlayerJoinEvent PJe) {
+		P = PJe.getPlayer();
+		String str = P.getUniqueId().toString();
+
+		SQLPre(str);
+
+		switch (sqlSetter.UserCheck2()) {
+		case UnRigisted:
+			return;
+		case Blocked:
+			return;
+		case UnListed:
+			P.setWhitelisted(true);
+			PJe.setJoinMessage("");
+			return;
+		case Rigisted:
+			PJe.setJoinMessage("");
+			return;
+		}
+
 	}
 
 	@EventHandler
@@ -66,9 +91,9 @@ public class PlayerBackEnd implements Listener {
 	}
 
 	public void PlayerPingkick() {
-		
+
 	}
-	
+
 	@Deprecated
 	public void PlayerDeathKick(PlayerDeathEvent PDe) {
 		P = PDe.getEntity().getPlayer();

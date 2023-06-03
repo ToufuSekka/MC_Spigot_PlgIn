@@ -40,7 +40,6 @@ public class Main extends JavaPlugin {
 		Sorter.Sorting();
 		Twitter.Build();
 		Twitter.Tweet(CustConfig.getOpenMessage());
-
 	}
 
 	@Override

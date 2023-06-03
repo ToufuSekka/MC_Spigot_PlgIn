@@ -51,13 +51,13 @@ public class SQLMain {
 		this.PlayTime = PlayTime_SCD;
 	};
 
+	@Deprecated
 	public boolean Rigist() {
 		boolean checker = false;
 
 		INIT();
 		try {
-			this.ppst = con.prepareStatement(
-					"INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
+			this.ppst = con.prepareStatement("INSERT INTO userdata(UUID,Lifetime) VALUE (?,3000000);");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -71,12 +71,17 @@ public class SQLMain {
 		return checker;
 	}
 
+	/***
+	 * That is Recording Signing time.
+	 * 
+	 * @return true - Has UUID and Recorded TimeStemps<br/>
+	 *         false - Not having UUID
+	 ***/
 	public boolean Sign() {
 		boolean checker = false;
 		INIT();
 		try {
-			this.ppst = con.prepareStatement(
-					"UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
+			this.ppst = con.prepareStatement("UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -90,12 +95,12 @@ public class SQLMain {
 		return checker;
 	}
 
+	@Deprecated
 	public boolean UserCheck() {
 		boolean checker = false;
 		INIT();
 		try {
-			this.ppst = con.prepareStatement(
-					"SELECT 'UUID' FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement("SELECT 'UUID' FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 			checker = Res.next();
@@ -104,6 +109,26 @@ public class SQLMain {
 		}
 		CloseAll();
 		return checker;
+	}
+
+	public RigistUser UserCheck2() {
+		RigistUser Result = null;
+
+		INIT();
+		try {
+			this.ppst = con.prepareStatement("SELECT 'Listed', 'UUID' FROM userdata WHERE UUID=?;");
+			this.ppst.setString(1, this.UUID);// UUID
+			this.Res = this.ppst.executeQuery();
+
+			if (Res.next())
+				Result = RigistUser.values()[Res.getInt(0)];
+			else
+				Result = RigistUser.UnRigisted;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Result;
 	}
 
 	public boolean GameLeave() {
@@ -117,8 +142,8 @@ public class SQLMain {
 
 		INIT();
 		try {
-			this.ppst = con.prepareStatement(
-					"UPDATE userdata SET LogOutTime=CURRENT_TIMESTAMP, Lifetime=? WHERE UUID=?;");
+			this.ppst = con
+					.prepareStatement("UPDATE userdata SET LogOutTime=CURRENT_TIMESTAMP, Lifetime=? WHERE UUID=?;");
 			this.ppst.setInt(1, TotalTime);
 			this.ppst.setString(2, this.UUID);
 			this.ppst.executeUpdate();
@@ -137,8 +162,7 @@ public class SQLMain {
 		INIT();
 		try {
 			// Search
-			this.ppst = con.prepareStatement(
-					"SELECT Lifetime FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement("SELECT Lifetime FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 
