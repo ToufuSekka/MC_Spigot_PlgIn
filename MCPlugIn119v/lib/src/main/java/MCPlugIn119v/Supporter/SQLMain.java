@@ -77,11 +77,18 @@ public class SQLMain {
 	 * @return true - Has UUID and Recorded TimeStemps<br/>
 	 *         false - Not having UUID
 	 ***/
-	public boolean Sign() {
+	public boolean Sign(boolean Listed) {
 		boolean checker = false;
+		String Query;
+
+		if (Listed)
+			Query = "UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;";
+		else
+			Query = "UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP, Listed=3 WHERE UUID = ?;";
+
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("UPDATE userdata SET LogInTime= CURRENT_TIMESTAMP WHERE UUID = ?;");
+			this.ppst = con.prepareStatement(Query);
 			this.ppst.setString(1, this.UUID);// UUID
 			int ErrorChker = this.ppst.executeUpdate();
 
@@ -116,12 +123,12 @@ public class SQLMain {
 
 		INIT();
 		try {
-			this.ppst = con.prepareStatement("SELECT 'Listed', 'UUID' FROM userdata WHERE UUID=?;");
+			this.ppst = con.prepareStatement("SELECT Listed, UUID FROM userdata WHERE UUID=?;");
 			this.ppst.setString(1, this.UUID);// UUID
 			this.Res = this.ppst.executeQuery();
 
 			if (Res.next())
-				Result = RigistUser.values()[Res.getInt(0)];
+				Result = RigistUser.values()[Res.getInt(1)];
 			else
 				Result = RigistUser.UnRigisted;
 

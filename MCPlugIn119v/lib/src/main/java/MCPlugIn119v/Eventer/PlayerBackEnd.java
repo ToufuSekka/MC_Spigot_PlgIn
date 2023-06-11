@@ -26,32 +26,6 @@ public class PlayerBackEnd implements Listener {
 	private SQLMain sqlSetter;
 	private CustDataConfig CustConfig;
 
-	@Deprecated
-	public void ServerJoin(PlayerJoinEvent PJe) {
-		P = PJe.getPlayer();
-		String str = P.getUniqueId().toString();
-
-		SQLPre(str);
-
-		if (sqlSetter.UserCheck()) {
-			if (sqlSetter.GetLeftTime() > 0) {
-				sqlSetter.Sign();
-				P.setStatistic(Statistic.PLAY_ONE_MINUTE, 0);
-				PJe.setJoinMessage("");
-			} else {
-				P.kickPlayer("Nothing Playing Time. You should ask to ADMIN");
-				sqlSetter = null;
-				return;
-			}
-		} else {
-			P.setWhitelisted(true);
-			PJe.setJoinMessage("");
-
-		}
-		CustConfig = null;
-		sqlSetter = null;
-	}
-
 	@EventHandler
 	public void ServerJoin2(PlayerJoinEvent PJe) {
 		P = PJe.getPlayer();
@@ -61,18 +35,27 @@ public class PlayerBackEnd implements Listener {
 
 		switch (sqlSetter.UserCheck2()) {
 		case UnRigisted:
-			return;
+			P.kickPlayer("You must rigist your information before");
+			break;
 		case Blocked:
-			return;
+			P.setWhitelisted(false);
+			P.kickPlayer("You're Banned by Outter System");
+			break;
 		case UnListed:
 			P.setWhitelisted(true);
+			sqlSetter.Sign(false);
 			PJe.setJoinMessage("");
-			return;
+			break;
 		case Rigisted:
+			if (sqlSetter.GetLeftTime() < 0) {
+				P.kickPlayer("Nothing Playing Time. You should ask to ADMIN");
+			}
+			sqlSetter.Sign(true);
 			PJe.setJoinMessage("");
-			return;
+			break;
 		}
-
+		sqlSetter = null;
+		CustConfig = null;
 	}
 
 	@EventHandler

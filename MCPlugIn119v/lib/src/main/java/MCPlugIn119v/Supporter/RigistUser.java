@@ -8,7 +8,6 @@ public enum RigistUser {
 	 RigistUser(int Values) {
 		 this.Nums = Values;
 	}
-	 
 	 public int getValues() {
 		 return Nums;
 	 }
