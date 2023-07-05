@@ -102,7 +102,6 @@ public class SQLMain {
 		return checker;
 	}
 
-	@Deprecated
 	public boolean UserCheck() {
 		boolean checker = false;
 		INIT();

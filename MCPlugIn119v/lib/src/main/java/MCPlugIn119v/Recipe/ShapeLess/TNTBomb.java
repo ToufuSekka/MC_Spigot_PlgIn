@@ -1,10 +1,7 @@
 package MCPlugIn119v.Recipe.ShapeLess;
 
-import java.util.*;
-
 import org.bukkit.*;
 import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.*;
 import org.bukkit.plugin.java.*;
 import org.bukkit.FireworkEffect.*;
 

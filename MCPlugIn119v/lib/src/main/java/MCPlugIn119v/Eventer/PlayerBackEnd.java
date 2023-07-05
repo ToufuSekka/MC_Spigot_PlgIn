@@ -26,34 +26,21 @@ public class PlayerBackEnd implements Listener {
 	private SQLMain sqlSetter;
 	private CustDataConfig CustConfig;
 
+	private String PlayerUUID;
+
 	@EventHandler
 	public void ServerJoin2(PlayerJoinEvent PJe) {
+		Bukkit.reloadWhitelist();
 		P = PJe.getPlayer();
-		String str = P.getUniqueId().toString();
+		PlayerUUID = P.getUniqueId().toString();
 
-		SQLPre(str);
+		SQLPre(PlayerUUID);
 
-		switch (sqlSetter.UserCheck2()) {
-		case UnRigisted:
+		if (sqlSetter.UserCheck())
+			PJe.setJoinMessage("");
+		else
 			P.kickPlayer("You must rigist your information before");
-			break;
-		case Blocked:
-			P.setWhitelisted(false);
-			P.kickPlayer("You're Banned by Outter System");
-			break;
-		case UnListed:
-			P.setWhitelisted(true);
-			sqlSetter.Sign(false);
-			PJe.setJoinMessage("");
-			break;
-		case Rigisted:
-			if (sqlSetter.GetLeftTime() < 0) {
-				P.kickPlayer("Nothing Playing Time. You should ask to ADMIN");
-			}
-			sqlSetter.Sign(true);
-			PJe.setJoinMessage("");
-			break;
-		}
+
 		sqlSetter = null;
 		CustConfig = null;
 	}
@@ -61,10 +48,10 @@ public class PlayerBackEnd implements Listener {
 	@EventHandler
 	public void ServerQuit(PlayerQuitEvent PQe) {
 		P = PQe.getPlayer();
-		String str = P.getUniqueId().toString();
+		PlayerUUID = P.getUniqueId().toString();
 		int Time = P.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
-
-		SQLPre(str);
+		
+		SQLPre(PlayerUUID);
 
 		sqlSetter.SetPlayTime(Time);
 		sqlSetter.GameLeave();
