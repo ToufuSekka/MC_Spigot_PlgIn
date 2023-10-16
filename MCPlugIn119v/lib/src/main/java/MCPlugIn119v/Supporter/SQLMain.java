@@ -9,10 +9,23 @@ import java.sql.*;
 public class SQLMain {
 	// private static String SERVER_local =
 	// "jdbc:mysql://wint0719.ipdisk.co.kr:3306/mctotalsys";
+	
+	// Getter And Setter
 	private String SERVER;
+	public void SetServerAdress(String Adress) {
+		this.SERVER = Adress;
+	}
+	
 	private String DBUser;
+	public void SetUser(String DBUser) {
+		this.DBUser = DBUser;
+	}
+	
 	private String Password;
-
+	public void SetPassword(String Password) {
+		this.Password = Password;
+	}
+	
 	// SQL
 	private Connection con;
 	private PreparedStatement ppst;
@@ -20,37 +33,20 @@ public class SQLMain {
 
 	// IN_Class
 	private String UUID;
+	public void SetUUID(String MC_UUID) {
+		this.UUID = MC_UUID;
+	}
 
 	private int PlayTime, LeftTime;
-
+	public void SetPlayTime(int PlayTime_SCD) {
+		this.PlayTime = PlayTime_SCD;
+	};
+	
 	public SQLMain(String Server, String UserID, String UserPW) {
 		this.SERVER = Server;
 		this.DBUser = UserID;
 		this.Password = UserPW;
 	}
-
-	// Getter And Setter
-	public void SetServerAdress(String Adress) {
-		this.SERVER = Adress;
-	}
-
-	public void SetUser(String DBUser) {
-		this.DBUser = DBUser;
-	}
-
-	public void SetPassword(String Password) {
-		this.Password = Password;
-	}
-
-	// UUID
-	public void SetUUID(String MC_UUID) {
-		this.UUID = MC_UUID;
-	}
-
-	public void SetPlayTime(int PlayTime_SCD) {
-		this.PlayTime = PlayTime_SCD;
-	};
-
 	@Deprecated
 	public boolean Rigist() {
 		boolean checker = false;
