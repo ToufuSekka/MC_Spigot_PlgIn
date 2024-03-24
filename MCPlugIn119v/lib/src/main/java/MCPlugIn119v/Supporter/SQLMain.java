@@ -47,6 +47,7 @@ public class SQLMain {
 		this.DBUser = UserID;
 		this.Password = UserPW;
 	}
+	
 	@Deprecated
 	public boolean Rigist() {
 		boolean checker = false;
