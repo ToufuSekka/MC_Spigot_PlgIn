@@ -6,7 +6,6 @@ import org.bukkit.plugin.java.*;
 //
 import MCPlugIn119v.Eventer.*;
 import MCPlugIn119v.Eventer.SpecialWeapon.*;
-import MCPlugIn119v.Eventer.RecipeSpecial.*;
 
 //
 import MCPlugIn119v.Commander.*;
@@ -24,7 +23,6 @@ import MCPlugIn119v.Supporter.*;
  */
 public class Main extends JavaPlugin {
 
-	private TwitMain Twitter;
 	private PlayerDataSorter Sorter;
 	private CustDataConfig CustConfig;
 
@@ -46,23 +44,13 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 
 		Bukkit.getPluginManager().registerEvents(new PlayerBackEnd(), this);
-		Bukkit.getPluginManager().registerEvents(new PlayerFrontEnd(), this);
 		Bukkit.getPluginManager().registerEvents(new WorldEnvirSys(), this);
 		Bukkit.getPluginManager().registerEvents(new NatureItemDrop(), this);
 		Bukkit.getPluginManager().registerEvents(new BombSet(), this);
 		
-		// StoreSet
-		this.getCommand("store").setExecutor(new CMDMain());
-
 		// Specialrecipe
 		new TNTBomb(BombType.Bomb, this);
 		new TNTBomb(BombType.Nuclear, this);
 		new TNTBomb(BombType.Howitzer, this);
 	}
-
-	@Override
-	public void onDisable() {
-		Twitter.Tweet(CustConfig.getCloseMessage());
-	}
-
 }
